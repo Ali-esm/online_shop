@@ -1,4 +1,5 @@
 from django.db import models
+from .manager import BaseManager
 
 
 class BaseModel(models.Model):
