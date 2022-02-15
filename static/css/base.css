@@ -1,0 +1,38 @@
+.my-nav{
+    display: inline-block;
+    position: relative;
+    color: black!important;
+    font-size: 20px;
+}
+.my-nav:after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #ff001e;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+}
+.my-nav:hover:after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.my-footer{
+    background-color: black!important;
+}
+.footer-link{
+    text-decoration: none;
+    color: gray !important;
+    display: block;
+}
+.newletter-input{
+    padding: 5px;
+    margin: 2px;
+    border: none;
+    border-bottom: 2px solid white!important;
+    color: white!important;
+    background-color: black!important;
+}
