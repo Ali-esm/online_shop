@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 3rd party apps
+    'rosetta',
 
     # Django Installed app
     'django.contrib.admin',
