@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 16:27+0000\n"
-"PO-Revision-Date: 2022-02-15 16:29+0000\n"
+"POT-Creation-Date: 2022-02-15 21:50+0000\n"
+"PO-Revision-Date: 2022-02-15 21:51+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,3 +22,20 @@ msgstr ""
 #: templates/layout/_base.html:11
 msgid "Rayka Shop"
 msgstr "فروشگاه رایکا"
+
+#: templates/layout/_base.html:29
+#| msgid "Rayka Shop"
+msgid "Rayka"
+msgstr "رایکا"
+
+#: templates/layout/_base.html:35
+msgid "Home"
+msgstr "صفحه اصلی"
+
+#: templates/layout/_base.html:40
+msgid "Shop"
+msgstr "فروشگاه"
+
+#: templates/layout/_base.html:45
+msgid "Contact"
+msgstr "تماس با ما"
