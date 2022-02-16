@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser, UserManager
+from django.utils.datetime_safe import datetime
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from .manager import BaseManager
@@ -82,7 +83,16 @@ class BaseDiscount(models.Model):
         :param price: int
         :return profit: int
         """
-        return min(self.amount, price)
+        return None if self.is_expire() else min(price, self.amount)
+
+    def is_expire(self) -> bool:
+        """
+        check expire time past or not
+        :return: bool
+        """
+        if self.expire_time <= datetime.now():
+            return True
+        return False
 
 
 
