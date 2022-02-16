@@ -1,6 +1,33 @@
-from django.db import models
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
+from django.db import models
 from .manager import BaseManager
+from .validators import phone_validator
+
+
+class MyUserManager(UserManager):
+    """
+    Customization Django UserManager for change username to phone_number field
+    """
+
+    def create_superuser(self, username=None, email=None, password=None, **extra_fields):
+        username = extra_fields["phone_number"]
+        return super().create_superuser(username, email, password, **extra_fields)
+
+
+class User(AbstractUser):
+    """
+    Customization Django User to add phone_number field & change username field to phone_number field
+    """
+    class Meta:
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
+
+    phone_number = models.CharField(max_length=11, unique=True, verbose_name=_('Phone Number'),
+                                    validators=[phone_validator], help_text=_('Enter Your Phone Number'))
+
+    USERNAME_FIELD = 'phone_number'
+    objects = MyUserManager()
 
 
 class BaseModel(models.Model):
