@@ -21,6 +21,6 @@ class CategoryTest(TestCase):
         self.assertEqual(self.men_category.is_sub, False)
 
     def test_model_str(self):
-        self.assertEqual(self.men_category, 'men')
-        self.assertEqual(self.shirt_category, 'shirt')
+        self.assertEqual(str(self.men_category), 'men')
+        self.assertEqual(str(self.shirt_category), 'shirt')
 
