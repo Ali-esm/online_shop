@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from core.models import BaseModel
+from core.models import BaseModel, BaseDiscount
 
 
 class Category(BaseModel):
@@ -24,3 +24,14 @@ class Category(BaseModel):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Discount(BaseDiscount):
+    name = models.CharField(default='discount', max_length=100, verbose_name=_('name'))
+
+    class Meta:
+        verbose_name = _('Discount')
+        verbose_name_plural = _('Discounts')
+
+    def __str__(self):
+        return f"{self.name}"
