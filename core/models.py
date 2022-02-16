@@ -62,7 +62,7 @@ class BaseDiscount(models.Model):
                             help_text=_('choose type of discount'))
     amount = models.PositiveIntegerField(default=0, verbose_name=_('amount'),
                                          help_text=_('set amount of discount'))
-    expire_time = models.DateTimeField(verbose_name=_('expire time'),
+    expire_time = models.DurationField(verbose_name=_('expire time'),
                                        help_text=_('set date & time of expiration'))
 
     class Meta:
