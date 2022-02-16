@@ -65,6 +65,9 @@ class BaseDiscount(models.Model):
     expire_time = models.DateTimeField(verbose_name=_('expire time'),
                                        help_text=_('set date & time of expiration'))
 
+    class Meta:
+        abstract = True
+
     @property
     def get_type(self):
         """
