@@ -53,3 +53,33 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class BaseDiscount(models.Model):
+    PERCENT = ('PE', 'percent')
+    PRICE = ('PR', 'price')
+    type = models.CharField(max_length=2, choices=(PERCENT, PRICE), verbose_name=_('type'),
+                            help_text=_('choose type of discount'))
+    amount = models.PositiveIntegerField(default=0, verbose_name=_('amount'),
+                                         help_text=_('set amount of discount'))
+    expire_time = models.DateTimeField(verbose_name=_('expire time'),
+                                       help_text=_('set date & time of expiration'))
+
+    @property
+    def get_type(self):
+        """
+        convert type to readable values
+        :return: str
+        """
+        return self.PRICE[1] if self.type == 'PR' else self.PERCENT[1]
+
+    def profit_amount(self, price: int) -> int:
+        """
+        Calculation user profit from discount
+        :param price: int
+        :return profit: int
+        """
+        return min(self.amount, price)
+
+
+
