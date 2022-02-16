@@ -1,11 +1,18 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 from core.models import BaseModel
 
 
 class Category(BaseModel):
-    name = models.CharField(max_length=100)
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
-    is_sub = models.BooleanField(default=False)
+    name = models.CharField(max_length=100, verbose_name=_('name'))
+    is_sub = models.BooleanField(default=False, verbose_name=_('is sub'))
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE,
+                               verbose_name=_('parent'))
+
+    class Meta:
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 21:50+0000\n"
-"PO-Revision-Date: 2022-02-15 21:51+0000\n"
+"POT-Creation-Date: 2022-02-16 19:14+0000\n"
+"PO-Revision-Date: 2022-02-16 19:16+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,12 +19,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
+#: product/models.py:8
+msgid "name"
+msgstr "نام"
+
+#: product/models.py:10
+msgid "parent"
+msgstr "دسته بندی والد"
+
+#: product/models.py:11
+msgid "is sub"
+msgstr "زیر گروه"
+
+#: product/models.py:14
+msgid "category"
+msgstr "دسته بندی"
+
+#: product/models.py:15
+msgid "categories"
+msgstr "دسته بندی ها"
+
 #: templates/layout/_base.html:11
 msgid "Rayka Shop"
 msgstr "فروشگاه رایکا"
 
 #: templates/layout/_base.html:29
-#| msgid "Rayka Shop"
 msgid "Rayka"
 msgstr "رایکا"
 
