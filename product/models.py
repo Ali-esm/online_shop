@@ -37,9 +37,16 @@ class Discount(BaseDiscount):
 
 
 class OffCode(BaseDiscount):
-    max_value = models.PositiveIntegerField(blank=True, null=True)
-    code = models.CharField(max_length=10)
-    used = models.BooleanField(default=False)
+    max_value = models.PositiveIntegerField(blank=True, null=True, verbose_name=_('maximum value'),
+                                            help_text=_('maximum value of discount'))
+    code = models.CharField(max_length=10, verbose_name=_('discount code'),
+                            help_text=_('set code for discount'))
+    used = models.BooleanField(default=False, verbose_name=_('is used'),
+                               help_text=_('set off code used or not'))
+
+    class Meta:
+        verbose_name = _('Off Code')
+        verbose_name_plural = _('Off Codes')
 
     def profit_amount(self, price: int):
         if self.used or self.is_expire():
