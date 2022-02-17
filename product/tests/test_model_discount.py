@@ -13,6 +13,10 @@ class DiscountTest(TestCase):
                                                  expire_time=tomorrow)
         self.discount2 = Discount.objects.create(name='discount2', type='PR', amount=10000,
                                                  expire_time=yesterday)
+        self.discount3 = Discount.objects.create(name='discount3', type='PE', amount=10,
+                                                 expire_time=tomorrow)
+        self.discount4 = Discount.objects.create(name='discount4', type='PE', amount=20,
+                                                 expire_time=yesterday)
 
     def test_discount_not_expired(self):
         self.assertFalse(self.discount1.is_expire())
@@ -28,6 +32,7 @@ class DiscountTest(TestCase):
 
     def test_profit_amount_expire_discount(self):
         self.assertEqual(self.discount2.profit_amount(20000), None)
+        self.assertEqual(self.discount4.profit_amount(300000), None)
 
     def test_profit_amount_gt_discount(self):
         self.assertEqual(self.discount1.profit_amount(20000), 5000)
@@ -42,3 +47,7 @@ class DiscountTest(TestCase):
     def test_discount_str(self):
         self.assertEqual(str(self.discount1), 'discount1')
         self.assertEqual(str(self.discount2), 'discount2')
+
+    def test_discount_profit_amount_by_percent(self):
+        self.assertEqual(self.discount3.profit_amount(30000), 3000)
+        self.assertEqual(self.discount3.profit_amount(100_000), 10_000)
