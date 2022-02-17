@@ -77,13 +77,18 @@ class BaseDiscount(models.Model):
         """
         return self.PRICE[1] if self.type == 'PR' else self.PERCENT[1]
 
-    def profit_amount(self, price: int) -> int:
+    def profit_amount(self, price: int):
         """
         Calculation user profit from discount
         :param price: int
         :return profit: int
         """
-        return None if self.is_expire() else min(price, self.amount)
+        if self.is_expire():
+            return None
+        elif self.type == 'PR':
+            return min(price, self.amount)
+        raw_profit = int((self.amount / 100) * price)
+        return min(raw_profit, price)
 
     def is_expire(self) -> bool:
         """
