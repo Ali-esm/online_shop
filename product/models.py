@@ -34,3 +34,17 @@ class Discount(BaseDiscount):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class OffCode(BaseDiscount):
+    max_value = models.PositiveIntegerField(blank=True, null=True)
+    code = models.CharField(max_length=10)
+    used = models.BooleanField(default=False)
+
+    def profit_amount(self, price: int):
+        if self.used or self.is_expire():
+            return None
+        elif self.type == 'PR':
+            return min(self.amount, price)
+        raw_profit = int((self.amount / 100) * price)
+        return min(raw_profit, self.max_value) if self.max_value else raw_profit
