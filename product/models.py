@@ -14,13 +14,12 @@ class Category(BaseModel):
         verbose_name = _('category')
         verbose_name_plural = _('categories')
 
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-
-        if isinstance(self.parent, self.__class__):
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if self.is_sub is False and isinstance(self.parent, self.__class__):
             self.is_sub = True
         else:
             self.is_sub = False
+        super().save(force_insert, force_update, using, update_fields)
 
     def __str__(self):
         return f'{self.name}'
