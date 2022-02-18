@@ -7,14 +7,14 @@ from core.models import BaseModel, BaseDiscount
 class Product(BaseModel):
     name = models.CharField(max_length=100, verbose_name=_('product name'))
     brand = models.CharField(max_length=100, verbose_name=_('brand name'))
-    price = models.PositiveIntegerField(name=_('price'), help_text=_('product price'))
-    inventory = models.PositiveIntegerField(name=_('inventory'), help_text=_('product inventory'))
+    price = models.PositiveIntegerField(verbose_name=_('price'), help_text=_('product price'))
+    inventory = models.PositiveIntegerField(verbose_name=_('inventory'), help_text=_('product inventory'))
     image = models.FileField(verbose_name=_('image'), upload_to='media/%Y-%m-%d',
                              default='media/not_available.jpg')
     detail = models.JSONField(blank=True, null=True, verbose_name=_('product detail'),
                               help_text=_('detail for product'))
     discount = models.ForeignKey('Discount', on_delete=models.SET_NULL, related_name='products',
-                                 blank=True, Null=True, default=None, verbose_name=_('discount'))
+                                 blank=True, null=True, default=None, verbose_name=_('discount'))
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='products')
 
     class Meta:
