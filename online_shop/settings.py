@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Additional Installed app
     'core',
     'product',
+    'customer',
 ]
 
 MIDDLEWARE = [
