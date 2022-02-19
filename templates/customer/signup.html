@@ -1,0 +1,35 @@
+{% extends 'customer/login.html' %}
+{% load static %}
+{% load i18n %}
+{% block extra_header %}
+    <style>
+        .helptext{
+            visibility: hidden;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container-fluid mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 mt-3 d-flex justify-content-center">
+                <div class="card col-4">
+                    <div class="card-body">
+                        <h2 class="card-title text-center" style="color: #ec2a2a">{% trans "Rayka"%}</h2>
+                        <h5 class="card-text">{% trans "SignUp" %}</h5>
+                        <p class="card-subtitle" style="font-size: small">{% trans "Hello!" %}</p>
+                        <br>
+                        <form action="">
+                            {% for field in form %}
+                            <p class="text-center">
+                                {{ field }}
+                            </p>
+                            {% endfor %}
+                            <p class="text-center"><input type="submit" class="btn-danger btn col-10 p-2" value="Login"></p>
+                        </form>
+                        <span style="font-size: small">{% trans "Have Account? " %}</span><a href="" class="card-link" style="font-size: small">{% trans "Login" %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
