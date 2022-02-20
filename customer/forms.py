@@ -19,15 +19,15 @@ class SignUpForm(CustomUserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'password1', 'password2']
+        fields = ['phone_number', 'first_name', 'last_name', 'password1', 'password2']
         labels = {
-            'username': '',
+            'phone_number': '',
             'first_name': '',
             'last_name': '',
         }
 
         widgets = {
-            'username': forms.TextInput(attrs={
+            'phone_number': forms.TextInput(attrs={
                 'class': 'col-10 p-2',
                 'placeholder': _('Phone'),
             }),
