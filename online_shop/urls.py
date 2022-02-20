@@ -18,9 +18,14 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
+    path('customer/', include('customer.urls')),
+    # below line for test and will be change later
+    path('', TemplateView.as_view(template_name='layout/_base.html'), name='home_view'),
 
     path('rosetta/', include('rosetta.urls')),
     prefix_default_language=False,
