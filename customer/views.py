@@ -36,3 +36,11 @@ class CustomerLoginView(views.LoginView):
         return super().get(request, *args, **kwargs)
 
 
+class CustomerLogoutView(views.LogoutView):
+    """
+    Customization LogoutView for Logout Customers
+    """
+    pass
+
+
+
