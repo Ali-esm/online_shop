@@ -23,7 +23,7 @@
                         <h5 class="card-text">{% trans "Login" %}</h5>
                         <p class="card-subtitle" style="font-size: small">{% trans "Hello!" %}</p>
                         <br>
-                        <form action="">
+                        <form action="" method="post">{% csrf_token %}
                             {% for field in form %}
                                 <p class="text-center">
                                     {{ field }}
