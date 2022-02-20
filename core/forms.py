@@ -7,9 +7,9 @@ from .models import User
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('username', )
+        fields = ('phone_number', )
         labels = {
-            'username': _("Phone Number"),
+            'phone_number': _("Phone Number"),
         }
         help_texts = {
             'username': _("Enter your Phone number")
@@ -26,7 +26,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User
-        fields = ('username', )
+        fields = ('phone_number', )
         labels = {
-            'username': _("Phone Number"),
+            'phone_number': _("Phone Number"),
         }
