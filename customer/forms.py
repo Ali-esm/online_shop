@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from core.models import User
 from core.forms import CustomUserCreationForm
@@ -18,18 +19,15 @@ class SignUpForm(CustomUserCreationForm):
 
     class Meta:
         model = User
-        fields = ['phone_number', 'first_name', 'last_name', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'password1', 'password2']
         labels = {
-            'phone_number': '',
+            'username': '',
             'first_name': '',
             'last_name': '',
         }
-        help_texts = {
-
-        }
 
         widgets = {
-            'phone_number': forms.TextInput(attrs={
+            'username': forms.TextInput(attrs={
                 'class': 'col-10 p-2',
                 'placeholder': _('Phone'),
             }),
@@ -44,18 +42,31 @@ class SignUpForm(CustomUserCreationForm):
         }
 
 
-class LoginForm(forms.ModelForm):
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'col-10 p-2',
+        'placeholder': _('Phone number'),
+    }))
+
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'col-10 p-2',
+        'placeholder': _('Password'),
+    }))
 
     class Meta:
-        model= User
-        fields = ['phone_number', 'password']
+        model = User
+        fields = ['username', 'password']
+
+        error_messages = {
+            'login_error': _("Phone Number or Password is Incorrect")
+        }
 
         labels = {
-            'phone_number': '',
+            'username': '',
             'password': '',
         }
         widgets = {
-            'phone_number': forms.TextInput(attrs={
+            'username': forms.TextInput(attrs={
                 'class': 'col-10 p-2',
                 'placeholder': _('Phone'),
             }),
