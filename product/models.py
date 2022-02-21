@@ -7,8 +7,8 @@ from core.models import BaseModel, BaseDiscount
 class Product(BaseModel):
     name = models.CharField(max_length=100, verbose_name=_('product name'))
     brand = models.CharField(max_length=100, verbose_name=_('brand name'))
-    price = models.PositiveIntegerField(verbose_name=_('price'), help_text=_('product price'))
-    inventory = models.PositiveIntegerField(verbose_name=_('inventory'), help_text=_('product inventory'))
+    price = models.PositiveIntegerField(verbose_name=_('price'), help_text=_('set product price'))
+    is_exist = models.BooleanField(default=True, verbose_name=_('available'))
     image = models.FileField(verbose_name=_('image'), upload_to='media/%Y-%m-%d',
                              default='media/not_available.jpg')
     detail = models.JSONField(blank=True, null=True, verbose_name=_('product detail'),
@@ -21,15 +21,16 @@ class Product(BaseModel):
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
 
-    def update_inventory(self, count: int):
+    def update_existence(self):
         """
-        update inventory value when user ordered
+        this method used for update existence of product
         """
-        if self.inventory - count >= 0:
-            self.inventory -= count
+        if self.is_exist:
+            self.is_exist = False
             self.save()
         else:
-            raise ValueError('Inventory cant be a negative number')
+            self.is_exist = True
+            self.save()
 
 
 class Category(BaseModel):
@@ -43,6 +44,9 @@ class Category(BaseModel):
         verbose_name_plural = _('categories')
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        """
+        Customization save method for check if category obj is_sub category set is_sub field to True
+        """
         if self.is_sub is False and isinstance(self.parent, self.__class__):
             self.is_sub = True
         else:
@@ -77,6 +81,9 @@ class OffCode(BaseDiscount):
         verbose_name_plural = _('Off Codes')
 
     def profit_amount(self, price: int):
+        """
+        Customization profit_amount for check if off code not used & not expired calculate profit
+        """
         if self.used or self.is_expire():
             return None
         elif self.type == 'PR':
