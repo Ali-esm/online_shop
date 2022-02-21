@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # 3rd party apps
+    'admin_volt.apps.AdminVoltConfig',
     'rosetta',
 
     # Django Installed app
