@@ -10,7 +10,7 @@ class Product(BaseModel):
     price = models.PositiveIntegerField(verbose_name=_('price'), help_text=_('set product price'))
     is_exist = models.BooleanField(default=True, verbose_name=_('available'))
     image = models.FileField(verbose_name=_('image'), upload_to='media/%Y-%m-%d',
-                             default='media/not_available.jpg')
+                             default='not_available.jpg')
     detail = models.JSONField(blank=True, null=True, verbose_name=_('product detail'),
                               help_text=_('detail for product'))
     discount = models.ForeignKey('Discount', on_delete=models.SET_NULL, related_name='products',
