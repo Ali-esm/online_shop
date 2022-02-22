@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 19:14+0000\n"
+"POT-Creation-Date: 2022-02-21 19:41+0000\n"
 "PO-Revision-Date: 2022-02-15 16:29+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,42 +19,322 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
+#: core/admin.py:17
+msgid "Personal info"
+msgstr ""
+
+#: core/admin.py:18
+msgid "Permissions"
+msgstr ""
+
+#: core/admin.py:21
+msgid "Important dates"
+msgstr ""
+
+#: core/forms.py:12 core/forms.py:31 core/models.py:31
+msgid "Phone Number"
+msgstr ""
+
+#: core/forms.py:15
+msgid "Enter your Phone number"
+msgstr ""
+
+#: core/models.py:28
+msgid "User"
+msgstr ""
+
+#: core/models.py:29
+msgid "Users"
+msgstr ""
+
+#: core/models.py:32
+msgid "Enter Your Phone Number"
+msgstr ""
+
+#: core/models.py:39
+msgid "create time"
+msgstr ""
+
+#: core/models.py:40
+msgid "last update"
+msgstr ""
+
+#: core/models.py:41
+msgid "active"
+msgstr ""
+
+#: core/models.py:42
+msgid "delete"
+msgstr ""
+
+#: core/models.py:66
+msgid "type"
+msgstr ""
+
+#: core/models.py:67
+msgid "choose type of discount"
+msgstr ""
+
+#: core/models.py:68
+msgid "amount"
+msgstr ""
+
+#: core/models.py:69
+msgid "set amount of discount"
+msgstr ""
+
+#: core/models.py:70
+msgid "expire time"
+msgstr ""
+
+#: core/models.py:71
+msgid "set date & time of expiration"
+msgstr ""
+
+#: core/validators.py:11
+msgid "Phone number length is 11 and must starts with 09"
+msgstr ""
+
+#: customer/forms.py:12 customer/forms.py:53 customer/forms.py:75
+msgid "Password"
+msgstr ""
+
+#: customer/forms.py:17
+msgid "Confirm Password"
+msgstr ""
+
+#: customer/forms.py:32 customer/forms.py:71
+msgid "Phone"
+msgstr ""
+
+#: customer/forms.py:36
+msgid "First Name"
+msgstr ""
+
+#: customer/forms.py:40
+msgid "Last Name"
+msgstr ""
+
+#: customer/forms.py:48
+msgid "Phone number"
+msgstr ""
+
+#: customer/forms.py:61
+msgid "Phone Number or Password is Incorrect"
+msgstr ""
+
+#: customer/models.py:10
+msgid "male"
+msgstr ""
+
+#: customer/models.py:11
+msgid "female"
+msgstr ""
+
+#: customer/models.py:12
+msgid "none"
+msgstr ""
+
+#: customer/models.py:16
+msgid "gender"
+msgstr ""
+
+#: customer/models.py:17
+msgid "birth date"
+msgstr ""
+
+#: customer/models.py:20
+msgid "Customer"
+msgstr ""
+
+#: customer/models.py:21
+msgid "Customers"
+msgstr ""
+
+#: customer/models.py:34
+msgid "city"
+msgstr ""
+
+#: customer/models.py:35
+msgid "province"
+msgstr ""
+
+#: customer/models.py:36
+msgid "street"
+msgstr ""
+
+#: customer/models.py:37
+msgid "alley"
+msgstr ""
+
+#: customer/models.py:38
+msgid "NO"
+msgstr ""
+
+#: customer/models.py:39
+msgid "zip code"
+msgstr ""
+
+#: customer/models.py:43
+msgid "Address"
+msgstr ""
+
+#: customer/models.py:44
+msgid "Addresses"
+msgstr ""
+
+#: product/admin.py:19
+#, python-brace-format
+msgid "{updated} product was successfully marked as not available."
+msgid_plural "{updated} products were successfully marked as not available."
+msgstr[0] ""
+msgstr[1] ""
+
+#: product/admin.py:28
+#, python-brace-format
+msgid "{updated} product was successfully marked as available."
+msgid_plural "{updated} products were successfully marked as available."
+msgstr[0] ""
+msgstr[1] ""
+
 #: product/models.py:8
-msgid "name"
+msgid "product name"
+msgstr ""
+
+#: product/models.py:9
+msgid "brand name"
 msgstr ""
 
 #: product/models.py:10
-msgid "parent"
+msgid "price"
+msgstr ""
+
+#: product/models.py:10
+msgid "set product price"
 msgstr ""
 
 #: product/models.py:11
-msgid "is sub"
+msgid "available"
+msgstr ""
+
+#: product/models.py:12
+msgid "image"
 msgstr ""
 
 #: product/models.py:14
-msgid "category"
+msgid "product detail"
 msgstr ""
 
 #: product/models.py:15
+msgid "detail for product"
+msgstr ""
+
+#: product/models.py:17
+msgid "discount"
+msgstr ""
+
+#: product/models.py:21
+msgid "Product"
+msgstr ""
+
+#: product/models.py:22
+msgid "Products"
+msgstr ""
+
+#: product/models.py:37 product/models.py:61
+msgid "name"
+msgstr ""
+
+#: product/models.py:38
+msgid "is sub"
+msgstr ""
+
+#: product/models.py:40
+msgid "parent"
+msgstr ""
+
+#: product/models.py:43
+msgid "category"
+msgstr ""
+
+#: product/models.py:44
 msgid "categories"
+msgstr ""
+
+#: product/models.py:64
+msgid "Discount"
+msgstr ""
+
+#: product/models.py:65
+msgid "Discounts"
+msgstr ""
+
+#: product/models.py:72
+msgid "maximum value"
+msgstr ""
+
+#: product/models.py:73
+msgid "maximum value of discount"
+msgstr ""
+
+#: product/models.py:74
+msgid "discount code"
+msgstr ""
+
+#: product/models.py:75
+msgid "set code for discount"
+msgstr ""
+
+#: product/models.py:76
+msgid "is used"
+msgstr ""
+
+#: product/models.py:77
+msgid "set off code used or not"
+msgstr ""
+
+#: product/models.py:80
+msgid "Off Code"
+msgstr ""
+
+#: product/models.py:81
+msgid "Off Codes"
+msgstr ""
+
+#: templates/customer/login.html:22 templates/customer/signup.html:17
+#: templates/layout/_base.html:30
+msgid "Rayka"
+msgstr ""
+
+#: templates/customer/login.html:23 templates/customer/signup.html:29
+#: templates/layout/_base.html:65
+msgid "Login"
+msgstr ""
+
+#: templates/customer/login.html:24 templates/customer/signup.html:19
+msgid "Hello!"
+msgstr ""
+
+#: templates/customer/login.html:34 templates/customer/signup.html:18
+msgid "SignUp"
+msgstr ""
+
+#: templates/customer/signup.html:29
+msgid "Have Account? "
 msgstr ""
 
 #: templates/layout/_base.html:11
 msgid "Rayka Shop"
 msgstr ""
 
-#: templates/layout/_base.html:29
-msgid "Rayka"
-msgstr ""
-
-#: templates/layout/_base.html:35
+#: templates/layout/_base.html:36
 msgid "Home"
 msgstr ""
 
-#: templates/layout/_base.html:40
+#: templates/layout/_base.html:41
 msgid "Shop"
 msgstr ""
 
-#: templates/layout/_base.html:45
+#: templates/layout/_base.html:46
 msgid "Contact"
 msgstr ""

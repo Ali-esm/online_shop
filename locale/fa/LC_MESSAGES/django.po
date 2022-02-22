@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 19:14+0000\n"
-"PO-Revision-Date: 2022-02-16 19:16+0000\n"
+"POT-Creation-Date: 2022-02-21 19:41+0000\n"
+"PO-Revision-Date: 2022-02-22 12:22+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,42 +19,322 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
+#: core/admin.py:17
+msgid "Personal info"
+msgstr "اطلاعات شخصی"
+
+#: core/admin.py:18
+msgid "Permissions"
+msgstr "دسترسی ها"
+
+#: core/admin.py:21
+msgid "Important dates"
+msgstr "تاریخ های مهم"
+
+#: core/forms.py:12 core/forms.py:31 core/models.py:31
+msgid "Phone Number"
+msgstr "شماره همراه"
+
+#: core/forms.py:15
+msgid "Enter your Phone number"
+msgstr "شماره همراه خود را وارد کنید"
+
+#: core/models.py:28
+msgid "User"
+msgstr "کاربر"
+
+#: core/models.py:29
+msgid "Users"
+msgstr "کاربرها"
+
+#: core/models.py:32
+msgid "Enter Your Phone Number"
+msgstr "شماره همراه خود را وارد کنید"
+
+#: core/models.py:39
+msgid "create time"
+msgstr "زمان ایجاد"
+
+#: core/models.py:40
+msgid "last update"
+msgstr "اخرین بروزرسانی"
+
+#: core/models.py:41
+msgid "active"
+msgstr "فعال"
+
+#: core/models.py:42
+msgid "delete"
+msgstr "حذف "
+
+#: core/models.py:66
+msgid "type"
+msgstr "نوع"
+
+#: core/models.py:67
+msgid "choose type of discount"
+msgstr "نوع تخفیف را مشخص کنید"
+
+#: core/models.py:68
+msgid "amount"
+msgstr "مقدار"
+
+#: core/models.py:69
+msgid "set amount of discount"
+msgstr "مقدار تخفیف را وارد کنید"
+
+#: core/models.py:70
+msgid "expire time"
+msgstr "زمان انقضا"
+
+#: core/models.py:71
+msgid "set date & time of expiration"
+msgstr "زمان و تاریخ انقضا را مشخص کنید"
+
+#: core/validators.py:11
+msgid "Phone number length is 11 and must starts with 09"
+msgstr "شماره همراه باید ۱۱ رقم باشد و با ۰۹ شروع شود"
+
+#: customer/forms.py:12 customer/forms.py:53 customer/forms.py:75
+msgid "Password"
+msgstr "رمز عبور"
+
+#: customer/forms.py:17
+msgid "Confirm Password"
+msgstr "تائيد رمز عبور"
+
+#: customer/forms.py:32 customer/forms.py:71
+msgid "Phone"
+msgstr "شماره همراه"
+
+#: customer/forms.py:36
+msgid "First Name"
+msgstr "نام"
+
+#: customer/forms.py:40
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+#: customer/forms.py:48
+msgid "Phone number"
+msgstr "شماره همراه"
+
+#: customer/forms.py:61
+msgid "Phone Number or Password is Incorrect"
+msgstr "شماره همراه یا رمز عبور نادرست می باشد"
+
+#: customer/models.py:10
+msgid "male"
+msgstr "مرد"
+
+#: customer/models.py:11
+msgid "female"
+msgstr "زن"
+
+#: customer/models.py:12
+msgid "none"
+msgstr "بدون انتخاب"
+
+#: customer/models.py:16
+msgid "gender"
+msgstr "جنسیت"
+
+#: customer/models.py:17
+msgid "birth date"
+msgstr "تاریخ تولد"
+
+#: customer/models.py:20
+msgid "Customer"
+msgstr "مشتری"
+
+#: customer/models.py:21
+msgid "Customers"
+msgstr "مشتریان"
+
+#: customer/models.py:34
+msgid "city"
+msgstr "شهر"
+
+#: customer/models.py:35
+msgid "province"
+msgstr "استان"
+
+#: customer/models.py:36
+msgid "street"
+msgstr "خیابان"
+
+#: customer/models.py:37
+msgid "alley"
+msgstr "کوچه"
+
+#: customer/models.py:38
+msgid "NO"
+msgstr "پلاک"
+
+#: customer/models.py:39
+msgid "zip code"
+msgstr "کدپستی"
+
+#: customer/models.py:43
+msgid "Address"
+msgstr "آدرس"
+
+#: customer/models.py:44
+msgid "Addresses"
+msgstr "آدرس ها"
+
+#: product/admin.py:19
+#, python-brace-format
+msgid "{updated} product was successfully marked as not available."
+msgid_plural "{updated} products were successfully marked as not available."
+msgstr[0] "محصول انتخاب شده نا موجود شد."
+msgstr[1] "محصولات انتخاب شده نا موجود شدند."
+
+#: product/admin.py:28
+#, python-brace-format
+msgid "{updated} product was successfully marked as available."
+msgid_plural "{updated} products were successfully marked as available."
+msgstr[0] "محصول انتخاب شده موجود شد."
+msgstr[1] "محصولات انتخاب شده موجود شدند."
+
 #: product/models.py:8
+msgid "product name"
+msgstr "نام محصول"
+
+#: product/models.py:9
+msgid "brand name"
+msgstr "برند محصول"
+
+#: product/models.py:10
+msgid "price"
+msgstr "قیمت"
+
+#: product/models.py:10
+msgid "set product price"
+msgstr "قیمت محصول را وارد کنید"
+
+#: product/models.py:11
+msgid "available"
+msgstr "موجود"
+
+#: product/models.py:12
+msgid "image"
+msgstr "تصویر"
+
+#: product/models.py:14
+msgid "product detail"
+msgstr "جزئیات محصول"
+
+#: product/models.py:15
+msgid "detail for product"
+msgstr "جزئیات محصول"
+
+#: product/models.py:17
+msgid "discount"
+msgstr "تخفیف"
+
+#: product/models.py:21
+msgid "Product"
+msgstr "محصول"
+
+#: product/models.py:22
+msgid "Products"
+msgstr "محصولات"
+
+#: product/models.py:37 product/models.py:61
 msgid "name"
 msgstr "نام"
 
-#: product/models.py:10
-msgid "parent"
-msgstr "دسته بندی والد"
-
-#: product/models.py:11
+#: product/models.py:38
 msgid "is sub"
 msgstr "زیر گروه"
 
-#: product/models.py:14
+#: product/models.py:40
+msgid "parent"
+msgstr "دسته بندی والد"
+
+#: product/models.py:43
 msgid "category"
 msgstr "دسته بندی"
 
-#: product/models.py:15
+#: product/models.py:44
 msgid "categories"
 msgstr "دسته بندی ها"
+
+#: product/models.py:64
+msgid "Discount"
+msgstr "تخفیف"
+
+#: product/models.py:65
+msgid "Discounts"
+msgstr "تخفیف ها"
+
+#: product/models.py:72
+msgid "maximum value"
+msgstr "بیشترین مقدار"
+
+#: product/models.py:73
+msgid "maximum value of discount"
+msgstr "بیشترین مقدار تخفیف"
+
+#: product/models.py:74
+msgid "discount code"
+msgstr "کد تخفیف"
+
+#: product/models.py:75
+msgid "set code for discount"
+msgstr "کد تخفیف را ثبت کنید"
+
+#: product/models.py:76
+msgid "is used"
+msgstr "استفاده شده"
+
+#: product/models.py:77
+msgid "set off code used or not"
+msgstr "کد تخفیف استفاده شده یا خیر؟"
+
+#: product/models.py:80
+msgid "Off Code"
+msgstr "کد تخفیف"
+
+#: product/models.py:81
+msgid "Off Codes"
+msgstr "کدهای تخفیف"
+
+#: templates/customer/login.html:22 templates/customer/signup.html:17
+#: templates/layout/_base.html:30
+msgid "Rayka"
+msgstr "رایکا"
+
+#: templates/customer/login.html:23 templates/customer/signup.html:29
+#: templates/layout/_base.html:65
+msgid "Login"
+msgstr "وارد شوید"
+
+#: templates/customer/login.html:24 templates/customer/signup.html:19
+msgid "Hello!"
+msgstr "سلام!"
+
+#: templates/customer/login.html:34 templates/customer/signup.html:18
+msgid "SignUp"
+msgstr "ثبت نام"
+
+#: templates/customer/signup.html:29
+msgid "Have Account? "
+msgstr "آیا حساب کاربری دارید؟"
 
 #: templates/layout/_base.html:11
 msgid "Rayka Shop"
 msgstr "فروشگاه رایکا"
 
-#: templates/layout/_base.html:29
-msgid "Rayka"
-msgstr "رایکا"
-
-#: templates/layout/_base.html:35
+#: templates/layout/_base.html:36
 msgid "Home"
 msgstr "صفحه اصلی"
 
-#: templates/layout/_base.html:40
+#: templates/layout/_base.html:41
 msgid "Shop"
 msgstr "فروشگاه"
 
-#: templates/layout/_base.html:45
+#: templates/layout/_base.html:46
 msgid "Contact"
 msgstr "تماس با ما"
