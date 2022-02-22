@@ -11,6 +11,7 @@
     <title>{% trans "Rayka Shop" %}</title>
     <!-- Bootstrap CDN Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
@@ -57,14 +58,22 @@
                         <li>
                             <a class="nav-link" href="">{% if CUREENT_LANG == 'en' %}فا{% else %}En{% endif %}</a>
                         </li>
-                        <li>
-
                             {% if  request.user.is_authenticated%}
-                                <a class="nav-link" href="#profile">{{ user.phone_number }}</a>
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      {{ user.phone_number }}
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#profile">{% trans "profile" %}</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url "customer:logout_view" %}">{% trans "logout" %}</a></li>
+                                  </ul>
+                                </li>
                             {% else %}
-                                <a class="nav-link" href="{% url 'customer:login_view' %}">{% trans "Login" %}</a>
+                                <li>
+                                    <a class="nav-link" href="{% url 'customer:login_view' %}">{% trans "Login" %}</a>
+                                </li>
                             {% endif %}
-                        </li>
                   </ul>
               </div>
         </nav>
