@@ -24,7 +24,7 @@
                                 {{ field }}
                             </p>
                             {% endfor %}
-                            <p class="text-center"><input type="submit" class="btn-danger btn col-10 p-2" value="Login"></p>
+                            <p class="text-center"><input type="submit" class="btn-danger btn col-10 p-2" value="{% trans "SignUp" %}"></p>
                         </form>
                         <span style="font-size: small">{% trans "Have Account? " %}</span><a href="{% url 'customer:login_view' %}" class="card-link" style="font-size: small">{% trans "Login" %}</a>
                     </div>
