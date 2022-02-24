@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     'admin_volt.apps.AdminVoltConfig',
     'rosetta',
+    'crispy_forms',
 
     # Django Installed app
     'django.contrib.admin',
@@ -153,3 +154,4 @@ AUTH_USER_MODEL = 'core.User'
 LOGIN_URL = 'customer:login_view'
 LOGIN_REDIRECT_URL = 'home_view'
 LOGOUT_REDIRECT_URL = 'customer:login_view'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
