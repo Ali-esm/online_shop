@@ -33,5 +33,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
-# admin.site.register(Product, ProductAdmin)
-# admin.site.register(Product, ProductAdmin)
+admin.site.register(Discount)
+admin.site.register(OffCode)
