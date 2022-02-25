@@ -20,12 +20,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from product.views import HotProductView
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
+    path('', HotProductView.as_view(), name='home_view'),
     path('customer/', include('customer.urls')),
-    # below line for test and will be change later
-    path('', TemplateView.as_view(template_name='layout/_base.html'), name='home_view'),
+    path('product/', include('product.urls')),
 
     path('rosetta/', include('rosetta.urls')),
     prefix_default_language=False,
