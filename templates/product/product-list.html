@@ -1,0 +1,10 @@
+{% extends 'layout/_base.html' %}
+{% block content %}
+    {% include 'product/carousel.html' %}
+
+        <div class="row justify-content-center mb-5 p-0">
+        <!-- Product Cards -->
+            {% include 'product/product-item.html' with products=products %}
+        <!-- End Product Cards -->
+        </div>
+{% endblock %}
