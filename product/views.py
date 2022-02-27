@@ -10,6 +10,11 @@ class ProductListView(generic.ListView):
     paginate_by = 15
 
 
+class ProductDetailView(generic.DetailView):
+    model = Product
+    template_name = 'product/product-detail.html'
+
+
 class HotProductView(generic.ListView):
     model = Product
     template_name = 'product/landing.html'
