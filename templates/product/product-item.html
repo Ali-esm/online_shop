@@ -3,7 +3,9 @@
         <div class="card" style="width: 18rem;">
             <img src="{{ product.image.url }}" class="card-img-top" height="200" alt="{{ product.name }}">
             <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
+                <h5 class="card-title">
+                    <a href="{% url 'product:product_detail' product.id %}">{{ product.name }}</a>
+                </h5>
                 <p class="card-text">{{ product.price }}$</p>
                 <p class="card-text">{{ product.brand }} brand</p>
                 <a href="#" class="btn btn-primary">Add to card +</a>
