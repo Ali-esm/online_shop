@@ -23,9 +23,26 @@
     {% endblock %}
 
     <style>
+        {% block extra_style %}{% endblock %}
     .w-100 {
       width: 100% !important;
       height: 75vh;
+    }
+    .dropdown-menu li {
+      position: relative;
+    }
+    .dropdown-menu .dropdown-submenu {
+      display: none;
+      position: absolute;
+      left: 100%;
+      top: -7px;
+    }
+    .dropdown-menu .dropdown-submenu-left {
+      right: 100%;
+      left: auto;
+    }
+    .dropdown-menu > li:hover > .dropdown-submenu {
+      display: block;
     }
     </style>
 
