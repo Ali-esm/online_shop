@@ -29,13 +29,14 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for root in root_categories %}
                             <li>
-                                <a class="dropdown-item" href="#">{{ root.name }}</a>
+                                <a class="dropdown-item" href="{% url 'product:product_list' %}">{{ root.name }}</a>
 
                                 {% if root.category_set.all %}
                                 <ul class="dropdown-menu dropdown-submenu">
                                     {% for sub in root.category_set.all %}
                                     <li>
-                                        <a href="" class="dropdown-item">{{ sub.name }}</a>
+                                        <a href="{% url 'product:product_category' %}?category={{ sub.name }}" class="dropdown-item">{{ sub.name }}</a>
+{#                                        <a href="?category={{ sub.name }}" class="dropdown-item">{{ sub.name }}</a>#}
                                     </li>
                                     {% endfor %}
                                 </ul>
