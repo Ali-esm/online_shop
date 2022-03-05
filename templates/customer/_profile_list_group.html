@@ -1,17 +1,19 @@
+{% load i18n %}
+
 <div class="col-md-4 col-sm-5">
     <div class="list-group">
         <a href="{% url 'customer:profile_view' %}" class="list-group-item">
-            <i class="fa fa-asterisk"></i> &nbsp;&nbsp;Information
-            <i class="fa fa-chevron-right list-group-chevron"></i>
+            <i class="fa fa-asterisk"></i> &nbsp;&nbsp;{% trans "Information" %}
+            <i class="fa {% trans "fa-chevron-right" %} list-group-chevron"></i>
         </a>
         <a href="#" class="list-group-item">
-            <i class="fa fa-shopping-bag"></i> &nbsp;&nbsp;Orders
-            <i class="fa fa-chevron-right list-group-chevron"></i>
+            <i class="fa fa-shopping-bag"></i> &nbsp;&nbsp;{% trans "Orders" %}
+            <i class="fa {% trans "fa-chevron-right" %} list-group-chevron"></i>
             <span class="badge">3</span>
         </a>
         <a href="#" class="list-group-item">
-            <i class="fa fa-address-book"></i> &nbsp;&nbsp;Addresses
-            <i class="fa fa-chevron-right list-group-chevron"></i>
+            <i class="fa fa-address-book"></i> &nbsp;&nbsp;{% trans "Addresses" %}
+            <i class="fa {% trans "fa-chevron-right" %} list-group-chevron"></i>
         </a>
     </div> <!-- /.list-group -->
 </div>

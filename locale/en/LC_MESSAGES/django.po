@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 12:31+0000\n"
+"POT-Creation-Date: 2022-03-05 19:57+0000\n"
 "PO-Revision-Date: 2022-02-15 16:29+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,8 +179,60 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: customer/models.py:44
+#: customer/models.py:44 templates/customer/_profile_list_group.html:15
 msgid "Addresses"
+msgstr ""
+
+#: order/models.py:12
+msgid "paid"
+msgstr ""
+
+#: order/models.py:13
+msgid "unpaid"
+msgstr ""
+
+#: order/models.py:14
+msgid "canceled"
+msgstr ""
+
+#: order/models.py:17 order/models.py:40
+msgid "order"
+msgstr ""
+
+#: order/models.py:18
+msgid "orders"
+msgstr ""
+
+#: order/models.py:21
+msgid "customer"
+msgstr ""
+
+#: order/models.py:23
+msgid "off code"
+msgstr ""
+
+#: order/models.py:24
+msgid "total price"
+msgstr ""
+
+#: order/models.py:26
+msgid "status"
+msgstr ""
+
+#: order/models.py:41
+msgid "product"
+msgstr ""
+
+#: order/models.py:42
+msgid "quantity"
+msgstr ""
+
+#: order/models.py:45
+msgid "order item"
+msgstr ""
+
+#: order/models.py:46
+msgid "order items"
 msgstr ""
 
 #: product/admin.py:19
@@ -301,45 +353,71 @@ msgstr ""
 msgid "Off Codes"
 msgstr ""
 
-#: templates/customer/login.html:22 templates/customer/signup.html:17
-#: templates/layout/_base.html:30
+#: templates/customer/_profile_list_group.html:6
+msgid "Information"
+msgstr ""
+
+#: templates/customer/_profile_list_group.html:7
+#: templates/customer/_profile_list_group.html:11
+#: templates/customer/_profile_list_group.html:16
+msgid "fa-chevron-right"
+msgstr ""
+
+#: templates/customer/_profile_list_group.html:10
+msgid "Orders"
+msgstr ""
+
+#: templates/customer/login.html:23 templates/customer/signup.html:18
+#: templates/layout/__navbar.html:11
 msgid "Rayka"
 msgstr ""
 
-#: templates/customer/login.html:23 templates/customer/signup.html:29
-#: templates/layout/_base.html:65
+#: templates/customer/login.html:24 templates/customer/signup.html:30
+#: templates/layout/__navbar.html:97
 msgid "Login"
 msgstr ""
 
-#: templates/customer/login.html:24 templates/customer/signup.html:19
+#: templates/customer/login.html:25 templates/customer/signup.html:20
 msgid "Hello!"
 msgstr ""
 
-#: templates/customer/login.html:32
+#: templates/customer/login.html:33
 msgid "login"
 msgstr ""
 
-#: templates/customer/login.html:34 templates/customer/signup.html:18
-#: templates/customer/signup.html:27
+#: templates/customer/login.html:35 templates/customer/signup.html:19
+#: templates/customer/signup.html:28
 msgid "SignUp"
 msgstr ""
 
-#: templates/customer/signup.html:29
+#: templates/customer/signup.html:30
 msgid "Have Account? "
 msgstr ""
 
-#: templates/layout/_base.html:11
-msgid "Rayka Shop"
-msgstr ""
-
-#: templates/layout/_base.html:36
+#: templates/layout/__navbar.html:17
 msgid "Home"
 msgstr ""
 
-#: templates/layout/_base.html:41
+#: templates/layout/__navbar.html:22
 msgid "Shop"
 msgstr ""
 
-#: templates/layout/_base.html:46
+#: templates/layout/__navbar.html:29
+msgid "Category"
+msgstr ""
+
+#: templates/layout/__navbar.html:54
 msgid "Contact"
+msgstr ""
+
+#: templates/layout/__navbar.html:90
+msgid "profile"
+msgstr ""
+
+#: templates/layout/__navbar.html:92
+msgid "logout"
+msgstr ""
+
+#: templates/layout/_base.html:13
+msgid "Rayka Shop"
 msgstr ""
