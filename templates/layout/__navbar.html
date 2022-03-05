@@ -1,8 +1,10 @@
 {% load i18n %}
-
+{% get_current_language as CURRENT_LANG %}
+{% get_available_languages as LANGS %}
+{% get_language_info_list for LANGS as languages %}
 <div class="container-fluid p-0 m-0">
-    <div class="row p-0 ">
-        <div class="col-12 col-lg-12 p-0 m-0">
+    <div class="row p-0">
+        <div class="col col-lg-12 p-0 m-0">
             <nav class="navbar navbar-expand navbar-light bg-light bg-white sticky-top p-0">
           <div class="container-fluid justify-content-between">
               <a class="navbar-brand" style="font-weight: bold; font-size: 25px" href="#">
@@ -64,25 +66,37 @@
                             </i>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="">{% if CUREENT_LANG == 'en' %}فا{% else %}En{% endif %}</a>
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ CURRENT_LANG }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for lang in languages %}
+                                <li>
+                                    <a class="dropdown-item" href="/{{ lang.code }}/" {% if lang.code == CURRENT_LANG %} class="selected" {% endif %}>
+                                        {{ lang.name_local }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </li>
-                        {% if  request.user.is_authenticated%}
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  {{ user.phone_number }}
-                              </a>
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#profile">{% trans "profile" %}</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url "customer:logout_view" %}">{% trans "logout" %}</a></li>
-                              </ul>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a class="nav-link" href="{% url 'customer:login_view' %}">{% trans "Login" %}</a>
-                            </li>
-                        {% endif %}
+
+                    {% if  request.user.is_authenticated%}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              {{ user.phone_number }}
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'customer:profile_view' %}">{% trans "profile" %}</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url "customer:logout_view" %}">{% trans "logout" %}</a></li>
+                          </ul>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="nav-link" href="{% url 'customer:login_view' %}">{% trans "Login" %}</a>
+                        </li>
+                    {% endif %}
               </ul>
           </div>
     </nav>
