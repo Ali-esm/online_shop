@@ -48,9 +48,12 @@ class CustomerLogoutView(views.LogoutView):
 class CustomerProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
-        customer = get_object_or_404(User, id=request.user.id)
+        user = get_object_or_404(User, id=request.user.id)
+        customer = user.customer
+        main_address = customer.address_set.first()
         context = {
             'customer': customer,
+            'address': main_address,
         }
         return render(request, 'customer/profile.html', context=context)
 
