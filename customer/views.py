@@ -1,10 +1,12 @@
 from django.contrib.auth import views, login
-from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
+from .forms import LoginForm, SignUpForm
+from django.views import View
 
 from core.models import User
 from .models import Customer
-from .forms import LoginForm, SignUpForm
 
 
 class CustomerSignUpView(views.FormView):
@@ -42,5 +44,14 @@ class CustomerLogoutView(views.LogoutView):
     """
     pass
 
+
+class CustomerProfileView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        customer = get_object_or_404(User, id=request.user.id)
+        context = {
+            'customer': customer,
+        }
+        return render(request, 'customer/profile.html', context=context)
 
 
