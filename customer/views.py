@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from .forms import LoginForm, SignUpForm
-from django.views import View
+from django.views import View, generic
 
 from core.models import User
-from .models import Customer
+from .models import Customer, Address
 
 
 class CustomerSignUpView(views.FormView):
@@ -22,7 +22,7 @@ class CustomerSignUpView(views.FormView):
         user.save()
         customer = Customer.objects.create(user=user)
         login(self.request, user)
-        return redirect(reverse('home_view'))
+        return redirect(reverse('customer:profile_view'))
 
 
 class CustomerLoginView(views.LoginView):
@@ -56,5 +56,17 @@ class CustomerProfileView(LoginRequiredMixin, View):
             'address': main_address,
         }
         return render(request, 'customer/profile.html', context=context)
+
+
+class CustomerAddressView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        user = get_object_or_404(User, id=request.user.id)
+        customer = user.customer
+        addresses = customer.address_set.all()
+        context = {
+            'addresses': addresses,
+        }
+        return render(request, 'customer/profile_address_list.html', context=context)
 
 
