@@ -70,3 +70,9 @@ class CustomerAddressView(LoginRequiredMixin, View):
         return render(request, 'customer/profile_address_list.html', context=context)
 
 
+class CustomerAddressDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Address
+    success_url = reverse_lazy('customer:address_view')
+
+
+
