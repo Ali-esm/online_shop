@@ -23,7 +23,7 @@
               <td>{{ address.alley }}</td>
               <td>{{ address.No }}</td>
               <td>{{ address.zip_code }}</td>
-              <td><a class="btn btn-danger btn-sm" href="">x</a></td>
+              <td><a class="btn btn-danger btn-sm" href="{% url 'customer:delete_address' address.id %}">x</a></td>
             </tr>
           {% endfor %}
           </tbody>
