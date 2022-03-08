@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from core.models import User
 from core.forms import CustomUserCreationForm
@@ -102,7 +103,12 @@ class AddressForm(forms.ModelForm):
                 'class': 'form-control',
             }),
         }
-    
-    
-    
-    
+
+    def clean_zip_code(self):
+        """
+        This method used for check zip code length equals to 10
+        """
+        zip_code = self.cleaned_data['zip_code']
+        if len(zip_code) != 10:
+            raise ValidationError(_("Zip code length must be 10"))
+        return zip_code
