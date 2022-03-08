@@ -15,5 +15,9 @@
             <i class="fa fa-address-book"></i> &nbsp;&nbsp;{% trans "Addresses" %}
             <i class="fa {% trans "fa-chevron-right" %} list-group-chevron"></i>
         </a>
+        <a href="{% url 'customer:logout_view' %}" class="list-group-item" id="address">
+            <i class="fa fa-power-off" aria-hidden="true"></i> &nbsp;&nbsp;{% trans "logout" %}
+            <i class="fa {% trans "fa-chevron-right" %} list-group-chevron"></i>
+        </a>
     </div> <!-- /.list-group -->
 </div>
