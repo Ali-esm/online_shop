@@ -2,7 +2,7 @@ from django.contrib.auth import views, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm, AddressForm
 from django.views import View, generic
 
 from core.models import User
@@ -72,6 +72,12 @@ class CustomerAddressView(LoginRequiredMixin, View):
 
 class CustomerAddressDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Address
+    success_url = reverse_lazy('customer:address_view')
+
+
+class CustomerAddressUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Address
+    form_class = AddressForm
     success_url = reverse_lazy('customer:address_view')
 
 
