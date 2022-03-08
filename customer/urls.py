@@ -1,14 +1,14 @@
 from django.urls import path
 from django.views.generic import TemplateView
-from.views import CustomerLoginView, CustomerSignUpView, CustomerLogoutView,\
-    CustomerProfileView, CustomerAddressView, CustomerAddressDeleteView
+from . import views
 
 app_name = 'customer'
 urlpatterns = [
-    path('login/', CustomerLoginView.as_view(), name='login_view'),
-    path('signup/', CustomerSignUpView.as_view(), name='signup_view'),
-    path('logout/', CustomerLogoutView.as_view(), name='logout_view'),
-    path('profile/', CustomerProfileView.as_view(), name='profile_view'),
-    path('address/', CustomerAddressView.as_view(), name='address_view'),
-    path('address/<int:pk>', CustomerAddressDeleteView.as_view(), name='delete_address'),
+    path('login/', views.CustomerLoginView.as_view(), name='login_view'),
+    path('signup/', views.CustomerSignUpView.as_view(), name='signup_view'),
+    path('logout/', views.CustomerLogoutView.as_view(), name='logout_view'),
+    path('profile/', views.CustomerProfileView.as_view(), name='profile_view'),
+    path('address/', views.CustomerAddressView.as_view(), name='address_view'),
+    path('address/<int:pk>', views.CustomerAddressDeleteView.as_view(), name='delete_address'),
+    path('edit-address/<int:pk>', views.CustomerAddressUpdateView.as_view(), name='edit_address'),
 ]
