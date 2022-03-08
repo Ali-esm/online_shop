@@ -81,4 +81,18 @@ class CustomerAddressUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy('customer:address_view')
 
 
+class CustomerAddressCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Address
+    form_class = AddressForm
+    template_name = 'customer/address_form.html'
+    success_url = reverse_lazy('customer:address_view')
+
+    def post(self, request, *args, **kwargs):
+        address_form = AddressForm(request.POST)
+        customer = request.user.customer
+        if address_form.is_valid():
+            Address.objects.create(customer=customer, **address_form.cleaned_data)
+            return redirect(reverse('customer:address_view'))
+
+
 
