@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from core.models import User
 from core.forms import CustomUserCreationForm
+from .models import Address
 
 
 class SignUpForm(CustomUserCreationForm):
@@ -75,3 +76,30 @@ class LoginForm(AuthenticationForm):
                 'placeholder': _('Password')
             })
         }
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ['city', 'province', 'alley', 'No', 'zip_code']
+        widgets = {
+            'city': forms.TextInput(attrs={
+                'class': 'form-control',
+            }),
+            'province': forms.TextInput(attrs={
+                'class': 'form-control',
+            }),
+            'alley': forms.TextInput(attrs={
+                'class': 'form-control',
+            }),
+            'No': forms.NumberInput(attrs={
+                'class': 'form-control',
+            }),
+            'zip_code': forms.NumberInput(attrs={
+                'class': 'form-control',
+            }),
+        }
+    
+    
+    
+    
