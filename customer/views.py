@@ -93,6 +93,7 @@ class CustomerAddressCreateView(LoginRequiredMixin, generic.CreateView):
         if address_form.is_valid():
             Address.objects.create(customer=customer, **address_form.cleaned_data)
             return redirect(reverse('customer:address_view'))
+        return render(request, 'customer/address_form.html', {'form': address_form})
 
 
 
