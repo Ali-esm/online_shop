@@ -12,7 +12,6 @@ from .models import Customer, Address
 class CustomerSignUpView(views.FormView):
     template_name = 'customer/signup.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('home_view')
 
     def form_valid(self, form):
         user = User.objects.create_user(password=form.cleaned_data['password2'],
@@ -34,7 +33,7 @@ class CustomerLoginView(views.LoginView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect(reverse('home_view'))
+            return redirect(reverse('customer:profile_view'))
         return super().get(request, *args, **kwargs)
 
 
