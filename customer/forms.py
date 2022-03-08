@@ -81,13 +81,16 @@ class LoginForm(AuthenticationForm):
 class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
-        fields = ['city', 'province', 'alley', 'No', 'zip_code']
+        fields = ['city', 'province', 'street', 'alley', 'No', 'zip_code']
         widgets = {
             'city': forms.TextInput(attrs={
                 'class': 'form-control',
             }),
             'province': forms.TextInput(attrs={
                 'class': 'form-control',
+            }),
+            'street': forms.TextInput(attrs={
+                'class': 'form-control'
             }),
             'alley': forms.TextInput(attrs={
                 'class': 'form-control',
