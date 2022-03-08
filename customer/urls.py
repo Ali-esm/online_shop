@@ -11,4 +11,5 @@ urlpatterns = [
     path('address/', views.CustomerAddressView.as_view(), name='address_view'),
     path('address/<int:pk>', views.CustomerAddressDeleteView.as_view(), name='delete_address'),
     path('edit-address/<int:pk>', views.CustomerAddressUpdateView.as_view(), name='edit_address'),
+    path('new-address/', views.CustomerAddressCreateView.as_view(), name='new_address'),
 ]
