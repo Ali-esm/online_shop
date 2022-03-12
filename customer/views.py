@@ -2,7 +2,7 @@ from django.contrib.auth import views, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from .forms import LoginForm, SignUpForm, AddressForm
+from .forms import LoginForm, SignUpForm, AddressForm, UpdateUserProfileForm
 from django.views import View, generic
 
 from core.models import User
@@ -44,19 +44,6 @@ class CustomerLogoutView(views.LogoutView):
     pass
 
 
-class CustomerProfileView(LoginRequiredMixin, View):
-
-    def get(self, request):
-        user = get_object_or_404(User, id=request.user.id)
-        customer = user.customer
-        main_address = customer.address_set.first()
-        context = {
-            'customer': customer,
-            'address': main_address,
-        }
-        return render(request, 'customer/profile.html', context=context)
-
-
 class CustomerAddressView(LoginRequiredMixin, View):
 
     def get(self, request):
@@ -94,5 +81,33 @@ class CustomerAddressCreateView(LoginRequiredMixin, generic.CreateView):
             return redirect(reverse('customer:address_view'))
         return render(request, 'customer/address_form.html', {'form': address_form})
 
+
+class UserProfileUpdateView(LoginRequiredMixin, generic.FormView):
+    model = User
+    form_class = UpdateUserProfileForm
+    template_name = 'customer/user_form.html'
+    success_url = reverse_lazy('customer:profile_view')
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['phone'] = self.request.user.phone_number
+        initial['first_name'] = self.request.user.first_name
+        initial['last_name'] = self.request.user.last_name
+        customer = self.request.user.customer
+        initial['birth_date'] = customer.birth_date
+        initial['gender'] = customer.gender
+        return initial
+
+    def form_valid(self, form):
+        print('im here')
+        user = User.objects.get(phone_number=self.request.user.phone_number)
+        customer = Customer.objects.get(user__phone_number=self.request.user.phone_number)
+        user.first_name = form.cleaned_data['first_name']
+        user.last_name = form.cleaned_data['last_name']
+        customer.gender = form.cleaned_data['gender']
+        customer.birth_date = form.cleaned_data['birth_date']
+        user.save()
+        customer.save()
+        return redirect(reverse('customer:profile_view'))
 
 
