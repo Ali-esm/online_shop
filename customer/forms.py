@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from core.models import User
 from core.forms import CustomUserCreationForm
-from .models import Address
+from .models import Address, Customer
 
 
 class SignUpForm(CustomUserCreationForm):
@@ -112,3 +112,20 @@ class AddressForm(forms.ModelForm):
         if len(zip_code) != 10:
             raise ValidationError(_("Zip code length must be 10"))
         return zip_code
+
+
+class UpdateUserProfileForm(forms.ModelForm):
+    GENDER_CHOICES = (
+        ('M', 'male'),
+        ('F', 'female'),
+        ('N', 'None'),
+    )
+    gender = forms.ChoiceField(choices=GENDER_CHOICES, initial=GENDER_CHOICES[2][0])
+    birth_date = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}))
+    phone = forms.CharField(disabled=True, label='Phone Number')
+
+    class Meta:
+        model = User
+        fields = ['phone', 'last_name', 'first_name', 'birth_date', 'gender']
+
+
