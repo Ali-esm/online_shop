@@ -89,6 +89,9 @@ class UserProfileUpdateView(LoginRequiredMixin, generic.FormView):
     success_url = reverse_lazy('customer:profile_view')
 
     def get_initial(self):
+        """
+        This method used for initialize form on profile template with data saved on DB
+        """
         initial = super().get_initial()
         initial['phone'] = self.request.user.phone_number
         initial['first_name'] = self.request.user.first_name
