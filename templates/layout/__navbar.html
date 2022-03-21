@@ -58,11 +58,8 @@
 
               <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class='nav-link' href="#">
-                            <i class="fa fa-shopping-cart fa-lg position-relative" style="font-size: xx-large" aria-hidden="true">
-                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: x-small">
-                                    1
-                                  </span>
+                        <a class='nav-link' id="get-cart-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa fa-shopping-cart fa-lg position-relative" id="counter-parent" style="font-size: xx-large" aria-hidden="true">
                             </i>
                         </a>
                     </li>
@@ -102,4 +99,5 @@
     </nav>
         </div>
     </div>
+    {% include 'layout/__items_modal.html' %}
 </div>
