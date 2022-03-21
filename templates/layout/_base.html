@@ -99,7 +99,7 @@
 <script>
     $('.add-to-cart').on('click', function (){
         let productId = $(this).attr('product-id')
-        fetch('{% url 'order:add_to_cart_view' %}', {
+        fetch('{% url 'order:add_product' %}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,6 @@
         .then(response => response.json())
         .then(data => {
             for (let product of data){
-                console.log(product.name)
                 let modalBody = `<li class="list-group-item p-0 m-0">
                       <div class="row justify-content-around">
                           <div class="col-3">
@@ -132,15 +131,17 @@
                           <div class="col-2">
                                <p>${product.price}</p>
                           </div>
-                          <div class="col-1">
-                              <a class="btn" href="">
-                                  <i class="fa fa-trash" aria-hidden="true" style="color: red; font-size: 25px"></i>
+                          <div class="col-1" >
+                              <a class="btn">
+                                  <i class="fa fa-trash" id='${product.id}' aria-hidden="true" style="color: red; font-size: 25px"></i>
                               </a>
                           </div>
                       </div>
                   </li>`
-                let modalInside = $('#product-modal').html()
-                $('#product-modal').html(modalInside + modalBody)
+                if ($(`#${product.id}`).length === 0){
+                    let modalInside = $('#product-modal').html()
+                    $('#product-modal').html(modalInside + modalBody)
+                }
             }
         })
         .catch(error=>{
