@@ -96,5 +96,58 @@
 </div>
 
 {% block extra_footer %}{% endblock %}
+<script>
+    $('.add-to-cart').on('click', function (){
+        let productId = $(this).attr('product-id')
+        fetch('{% url 'order:add_to_cart_view' %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': "{{ csrf_token }}",
+            },
+            body: JSON.stringify({product: productId}),
+        })
+        .then(data =>{
+            productCounter()
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    })
+
+    $('#get-cart-item').on('click', function (){
+        fetch('{% url 'order:get_products' %}')
+        .then(response => response.json())
+        .then(data => {
+            for (let product of data){
+                console.log(product.name)
+                let modalBody = `<li class="list-group-item p-0 m-0">
+                      <div class="row justify-content-around">
+                          <div class="col-3">
+                              <img src="${product.image}" alt="" width="150px">
+                          </div>
+                          <div class="col-2">
+                              <p>${product.name}</p>
+                          </div>
+                          <div class="col-2">
+                               <p>${product.price}</p>
+                          </div>
+                          <div class="col-1">
+                              <a class="btn" href="">
+                                  <i class="fa fa-trash" aria-hidden="true" style="color: red; font-size: 25px"></i>
+                              </a>
+                          </div>
+                      </div>
+                  </li>`
+                let modalInside = $('#product-modal').html()
+                $('#product-modal').html(modalInside + modalBody)
+            }
+        })
+        .catch(error=>{
+            console.error('Error:', error);
+        })
+    });
+</script>
+<script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>
