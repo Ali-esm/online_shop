@@ -1,0 +1,17 @@
+{% extends 'customer/profile.html' %}
+{% load crispy_forms_tags %}
+
+{% block profile_content %}
+    <div class="col-md-8 col-sm-7 text-center">
+        <form method="post" >{% csrf_token %}
+            <div class="col-lg-5">
+                {% for field in form %}
+                    {{ field | as_crispy_field}}
+                {% endfor %}
+            </div>
+
+            <input class="btn btn-primary mt-3" type="submit" value="Save">
+            <a class="btn btn-secondary mt-3" href="{% url 'customer:profile_view' %}">Back</a>
+        </form>
+    </div>
+{% endblock %}
