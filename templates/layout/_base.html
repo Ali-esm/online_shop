@@ -120,7 +120,7 @@
         .then(response => response.json())
         .then(data => {
             for (let product of data){
-                let modalBody = `<li class="list-group-item p-0 m-0">
+                let modalBody = `<li class="list-group-item p-0 m-0" id='${product.id}'>
                       <div class="row justify-content-around">
                           <div class="col-3">
                               <img src="${product.image}" alt="" width="150px">
@@ -133,7 +133,7 @@
                           </div>
                           <div class="col-1" >
                               <a class="btn">
-                                  <i class="fa fa-trash" id='${product.id}' aria-hidden="true" style="color: red; font-size: 25px"></i>
+                                  <i class="fa fa-trash delete-product" aria-hidden="true" product-id="${product.id}" style="color: red; font-size: 25px"></i>
                               </a>
                           </div>
                       </div>
@@ -148,6 +148,24 @@
             console.error('Error:', error);
         })
     });
+
+    $('#product-modal').on('click', '.delete-product', function (){
+        let productId = $(this).attr('product-id')
+        fetch('{% url 'order:delete_product' %}', {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': "{{ csrf_token }}",
+            },
+            body: JSON.stringify({product: productId}),
+        })
+        .then(response => {
+            $(`#${productId}`).remove()
+            productReduceCounter()
+        })
+        .catch(error => {
+            console.error('Error:', error)
+        })
+    })
 </script>
 <script src="{% static 'js/base.js' %}"></script>
 </body>
