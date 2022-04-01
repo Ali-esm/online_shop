@@ -10,7 +10,15 @@ function productCounter(){
     $('#counter-parent').html(span_counter)
     $('#counter').html(counter)
 }
-
+function productReduceCounter(){
+    let counterParent = $('#counter-parent').html()
+    let productCount = $('#counter').html()
+    productCount = Number(productCount)
+    if (productCount > 0){
+        productCount -= 1
+        $('#counter').html(productCount)
+    }
+}
 $(document).ready(function (){
     productCounter()
 })
