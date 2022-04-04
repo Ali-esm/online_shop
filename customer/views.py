@@ -1,9 +1,11 @@
 from django.contrib.auth import views, login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from .forms import LoginForm, SignUpForm, AddressForm, UpdateUserProfileForm
+from .forms import LoginForm, SignUpForm, AddressForm, UpdateUserProfileForm, ContactForm
 from django.views import View, generic
+from django.core.mail import send_mail, BadHeaderError
 
 from core.models import User
 from .models import Customer, Address
@@ -109,5 +111,24 @@ class UserProfileUpdateView(LoginRequiredMixin, generic.FormView):
         user.save()
         customer.save()
         return redirect(reverse('customer:profile_view'))
+
+
+class ContactFormView(generic.FormView):
+    form_class = ContactForm
+    template_name = 'customer/contact.html'
+
+    def form_valid(self, form):
+        subject = "Rayka User Contact"
+        body = {
+            'email': form.cleaned_data['email'],
+            'message': form.cleaned_data['message']
+        }
+        message = '\n'.join(body.values())
+        try:
+            send_mail(subject, message, form.cleaned_data['email'], ['admin@example.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header Found.')
+        return redirect(reverse('home_view'))
+
 
 
