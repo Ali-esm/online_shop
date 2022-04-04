@@ -102,7 +102,6 @@ class UserProfileUpdateView(LoginRequiredMixin, generic.FormView):
         return initial
 
     def form_valid(self, form):
-        print('im here')
         user = User.objects.get(phone_number=self.request.user.phone_number)
         customer = Customer.objects.get(user__phone_number=self.request.user.phone_number)
         user.first_name = form.cleaned_data['first_name']
