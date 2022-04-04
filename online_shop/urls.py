@@ -26,6 +26,7 @@ urlpatterns = i18n_patterns(
     path('', HotProductView.as_view(), name='home_view'),
     path('customer/', include('customer.urls')),
     path('product/', include('product.urls')),
+    path('order/', include('order.urls')),
 
     path('rosetta/', include('rosetta.urls')),
     prefix_default_language=True,
