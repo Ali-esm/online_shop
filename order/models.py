@@ -20,8 +20,8 @@ class Order(BaseModel):
     customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.RESTRICT,
                                  verbose_name=_('customer'))
     off_code = models.ForeignKey(OffCode, related_name='orders', on_delete=models.SET_NULL,
-                                 null=True, blank=True, verbose_name=_('off code'))
-    total_price = models.IntegerField(verbose_name=_('total price'))
+                                 null=True, blank=True, default=None, verbose_name=_('off code'))
+    total_price = models.IntegerField(default=0, verbose_name=_('total price'))
     status = models.CharField(max_length=1, choices=Status.choices, default=Status.UNPAID,
                               verbose_name=_('status'))
 
