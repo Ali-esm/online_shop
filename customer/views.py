@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import views, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
@@ -126,6 +127,7 @@ class ContactFormView(generic.FormView):
         message = '\n'.join(body.values())
         try:
             send_mail(subject, message, form.cleaned_data['email'], ['admin@example.com'])
+            messages.success(self.request, 'Your message has been sent successfully')
         except BadHeaderError:
             return HttpResponse('Invalid header Found.')
         return redirect(reverse('home_view'))
