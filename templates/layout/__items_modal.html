@@ -16,9 +16,9 @@
 
       <div class="modal-footer">
         {% if request.user.is_authenticated %}
-            <button type="button" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="{% url 'order:items_view' %}">Submit</a>
         {% else %}
-            <button type="button" class="btn btn-primary">login to submit</button>
+            <a class="btn btn-primary" href="{% url 'customer:login_view' %}">login to submit</a>
         {% endif %}
       </div>
     </div>
