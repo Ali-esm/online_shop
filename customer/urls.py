@@ -12,4 +12,5 @@ urlpatterns = [
     path('address/<int:pk>', views.CustomerAddressDeleteView.as_view(), name='delete_address'),
     path('edit-address/<int:pk>', views.CustomerAddressUpdateView.as_view(), name='edit_address'),
     path('new-address/', views.CustomerAddressCreateView.as_view(), name='new_address'),
+    path('contact/', views.ContactFormView.as_view(), name='contact_view'),
 ]
