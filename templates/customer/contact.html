@@ -1,0 +1,14 @@
+{% extends 'layout/_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container-fluid">
+            <form method="post" class="justify-content-center col-lg-5"> {% csrf_token %}
+                {% for field in form %}
+                    <p>
+                    {{ field  | as_crispy_field}}
+                    </p>
+                {% endfor %}
+                <input type="submit" class="btn btn-success mb-3" value="Send">
+            </form>
+    </div>
+{% endblock %}
