@@ -156,3 +156,7 @@ LOGIN_URL = 'customer:login_view'
 LOGIN_REDIRECT_URL = 'customer:profile_view'
 LOGOUT_REDIRECT_URL = 'customer:login_view'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
