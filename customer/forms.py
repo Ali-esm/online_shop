@@ -129,3 +129,7 @@ class UpdateUserProfileForm(forms.ModelForm):
         fields = ['phone', 'last_name', 'first_name', 'birth_date', 'gender']
 
 
+class ContactForm(forms.Form):
+    email = forms.EmailField(max_length=200)
+    message = forms.CharField(widget=forms.Textarea, max_length=1000)
+
