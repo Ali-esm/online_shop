@@ -14,11 +14,7 @@ class GetProductCookieAPIView(APIView):
 
     def get(self, request):
         product_list = []
-        if request.user.is_authenticated:
-            cookie_dict = request.session.items()
-        else:
-            cookie_dict = request.COOKIES.items()
-
+        cookie_dict = request.session.items()
         for key, value in cookie_dict:
             if key.startswith('p'):
                 product_id = key[1:]
