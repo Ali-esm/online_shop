@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from core.models import BaseModel
 
-from customer.models import Customer
+from customer.models import Customer, Address
 from product.models import Product, OffCode
 
 
@@ -19,9 +19,12 @@ class Order(BaseModel):
 
     customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.RESTRICT,
                                  verbose_name=_('customer'))
+    address = models.ForeignKey(Address, related_name='+', on_delete=models.CASCADE,
+                                verbose_name=_('address'))
     off_code = models.ForeignKey(OffCode, related_name='orders', on_delete=models.SET_NULL,
                                  null=True, blank=True, default=None, verbose_name=_('off code'))
     total_price = models.IntegerField(default=0, verbose_name=_('total price'))
+    final_price = models.IntegerField(default=0, verbose_name=_('final price'))
     status = models.CharField(max_length=1, choices=Status.choices, default=Status.UNPAID,
                               verbose_name=_('status'))
 
