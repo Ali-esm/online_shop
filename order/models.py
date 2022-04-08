@@ -19,7 +19,7 @@ class Order(BaseModel):
 
     customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.RESTRICT,
                                  verbose_name=_('customer'))
-    address = models.ForeignKey(Address, related_name='+', on_delete=models.CASCADE,
+    address = models.ForeignKey(Address, related_name='+', on_delete=models.DO_NOTHING,
                                 verbose_name=_('address'))
     off_code = models.ForeignKey(OffCode, related_name='orders', on_delete=models.SET_NULL,
                                  null=True, blank=True, default=None, verbose_name=_('off code'))
