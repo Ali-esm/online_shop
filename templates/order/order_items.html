@@ -31,7 +31,7 @@
                                 <button class="btn btn-outline-success" onclick="ChangeCount({{ item.1.id }}, {{ forloop.counter0 }})">
                                     {% trans "Edit count" %} <i class="fa fa-edit"></i>
                                 </button>
-                                <a href=""
+                                <a href="{% url 'order:remove_item' %}?item={{ item.1.id }}"
                                 class="btn btn-outline-danger">
                                     {% trans "Remove" %} <i class="fa fa-trash-o"></i>
                                 </a>
