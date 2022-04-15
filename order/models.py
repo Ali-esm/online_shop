@@ -33,7 +33,15 @@ class Order(BaseModel):
         """
         for calculating all order items price
         """
-        return sum(item.get_price() for item in self.orderitem_set.all())
+        return sum(item.get_price for item in self.orderitem_set.all())
+
+    @property
+    def get_final_price(self):
+        if self.off_code is None:
+            return self.get_total_price
+        profit = self.off_code.profit_amount(self.get_total_price)
+        profit = 0 if profit is None else profit
+        return self.get_total_price - profit
 
     def __str__(self):
         return f'< order #{self.id} {self.status} {self.total_price} >'
@@ -53,7 +61,10 @@ class OrderItem(BaseModel):
         """
          for calculating product final price minus discount
         """
-        profit_amount = self.product.discount.profit_amount(self.product.price)
+        if self.product.discount:
+            profit_amount = self.product.discount.profit_amount(self.product.price)
+        else:
+            profit_amount = 0
         return (self.product.price - profit_amount) * self.quantity
 
     def __str__(self):
