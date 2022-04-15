@@ -68,5 +68,7 @@ class OrderItemsView(LoginRequiredMixin, View):
             'addresses': addresses,
             'items': items,
         }
+        for product in products:
+            del request.session[product]
         res = render(request, 'order/order_items.html', context=context)
         return res
