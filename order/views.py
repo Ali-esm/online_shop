@@ -72,3 +72,13 @@ class OrderItemsView(LoginRequiredMixin, View):
             del request.session[product]
         res = render(request, 'order/order_items.html', context=context)
         return res
+
+
+class RemoveOrderItem(LoginRequiredMixin, View):
+
+    def get(self, request):
+        customer = Customer.objects.get(user__phone_number=request.user.phone_number)
+        item = OrderItem.objects.get(id=request.GET['item'])
+        if item.order.customer == customer:
+            item.delete()
+        return redirect(reverse('order:items_view'))
