@@ -28,7 +28,7 @@
                                 <td>{{ item.1.get_price }}$</td>
                             </form>
                             <td>
-                                <button class="btn btn-outline-success" onclick="ChangeCount({{ item.1.id }}, {{ forloop.counter0 }})">
+                                <button class="btn btn-outline-success">
                                     {% trans "Edit count" %} <i class="fa fa-edit"></i>
                                 </button>
                                 <a href="{% url 'order:remove_item' %}?item={{ item.1.id }}"
@@ -40,18 +40,15 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <label for="address">{% trans "Address" %}</label>
-            <select name="address" id="address" class="form-control">
-                {% for address in addresses %}
-                    {% if address.id == order.address.id %}
-                        <option value="{{ address.id }}" selected>{{ address }}</option>
-                    {% else %}
-                        <option value="{{ address.id }}">{{ address }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            <p class="help">{% trans 'Select your address to send your order' %}</p>
-
+            <form id="addressform">
+                <label for="address">{% trans "Address" %}</label>
+                <select name="addr" id="address" class="form-control">
+                    {% for address in addresses %}
+                         <option value="{{ address.id }}">{{ address }}</option>
+                    {% endfor %}
+                </select>
+                <p class="help">{% trans 'Select your address to send your order' %}</p>
+            </form>
             <a class="btn btn-outline-primary" href={% url 'customer:address_view' %}>
                 <i class="fa fa-map-marker"></i>
                 {% trans "add new address" %}
@@ -79,15 +76,33 @@
     </div>
     <div class="row justify-content-center mb-2">
         <div class="col col-3 mb-2">
-            <a href="" class="btn btn-success">
+            <a class="btn btn-success change_status" id="P">
                 <i class="fa fa-credit-card"></i>
                 {% trans "payment" %}
             </a>
-            <a href="" class="btn btn-danger">
+            <a class="btn btn-danger change_status" id="C">
                 <i class="fa fa-times"></i>
                 {% trans "cancel" %}
             </a>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_footer %}
+    <script>
+        $('.change_status').on('click', function (){
+            let addressForm = document.getElementById('addressform')
+            let formData = new FormData(addressForm)
+            let order_status = this.id
+            fetch(`{% url 'order:change_status' %}?status=${order_status}&orderid={{ order.id }}`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': "{{ csrf_token }}",
+                },
+                body: formData,
+            })
+        })
+
+    </script>
 {% endblock %}
