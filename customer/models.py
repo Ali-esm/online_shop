@@ -47,4 +47,4 @@ class Address(BaseModel):
         return self.customer.get_phone()
 
     def __str__(self):
-        return f'{self.city}'
+        return f'{self.city}-{self.alley}-{self.zip_code}'
