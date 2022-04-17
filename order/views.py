@@ -8,7 +8,7 @@ from django.views import View
 from .forms import OrderForm, OrderItemForm
 from .models import Order, OrderItem
 from product.models import Product
-from customer.models import Customer
+from customer.models import Customer, Address
 
 
 class AddProductCookieView(View):
@@ -82,3 +82,19 @@ class RemoveOrderItem(LoginRequiredMixin, View):
         if item.order.customer == customer:
             item.delete()
         return redirect(reverse('order:items_view'))
+
+
+class ChangeOrderStatus(LoginRequiredMixin, View):
+
+    def post(self, request):
+        customer = Customer.objects.get(user__phone_number=request.user.phone_number)
+        order = customer.orders.get(id=request.GET['orderid'])
+        order.address = Address.objects.get(id=request.POST.get('addr', 1))
+        order.total_price = order.get_total_price
+        order.final_price = order.get_final_price
+        if request.GET['status'] == 'P':
+            order.status = order.Status.PAID
+        elif request.GET['status'] == 'C':
+            order.status = order.Status.CANCELED
+        order.save()
+        return redirect(reverse('customer:profile_view'))
