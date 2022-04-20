@@ -27,11 +27,11 @@
             <figure class="hover-rotate">
                 <img src="{{ product.image.url }}" class="img-fluid ms-4" alt="">
             </figure>
-            <a href="#" class="btn btn-danger m-4 col-12">Add to card +</a>
+            <a class="btn btn-danger m-4 col-12 add-to-cart" product-id="{{ product.id }}">Add to card +</a>
         </div>
         <div class="col-12 col-lg-8">
-            <p>{{ product.name }}</p>
-            <p>{{ product.price }}$</p>
+            <p>Product name: {{ product.name }}</p>
+            <p>Price: {{ product.price }}$</p>
         </div>
     </div>
 </div>

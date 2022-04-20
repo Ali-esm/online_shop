@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from core.models import BaseModel
 
-from customer.models import Customer
+from customer.models import Customer, Address
 from product.models import Product, OffCode
 
 
@@ -19,9 +19,12 @@ class Order(BaseModel):
 
     customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.RESTRICT,
                                  verbose_name=_('customer'))
+    address = models.ForeignKey(Address, related_name='+', on_delete=models.DO_NOTHING,
+                                verbose_name=_('address'))
     off_code = models.ForeignKey(OffCode, related_name='orders', on_delete=models.SET_NULL,
-                                 null=True, blank=True, verbose_name=_('off code'))
-    total_price = models.IntegerField(verbose_name=_('total price'))
+                                 null=True, blank=True, default=None, verbose_name=_('off code'))
+    total_price = models.IntegerField(default=0, verbose_name=_('total price'))
+    final_price = models.IntegerField(default=0, verbose_name=_('final price'))
     status = models.CharField(max_length=1, choices=Status.choices, default=Status.UNPAID,
                               verbose_name=_('status'))
 
@@ -30,7 +33,15 @@ class Order(BaseModel):
         """
         for calculating all order items price
         """
-        return sum(item.get_price() for item in self.orderitem_set.all())
+        return sum(item.get_price for item in self.orderitem_set.all())
+
+    @property
+    def get_final_price(self):
+        if self.off_code is None:
+            return self.get_total_price
+        profit = self.off_code.profit_amount(self.get_total_price)
+        profit = 0 if profit is None else profit
+        return self.get_total_price - profit
 
     def __str__(self):
         return f'< order #{self.id} {self.status} {self.total_price} >'
@@ -50,7 +61,10 @@ class OrderItem(BaseModel):
         """
          for calculating product final price minus discount
         """
-        profit_amount = self.product.discount.profit_amount(self.product.price)
+        if self.product.discount:
+            profit_amount = self.product.discount.profit_amount(self.product.price)
+        else:
+            profit_amount = 0
         return (self.product.price - profit_amount) * self.quantity
 
     def __str__(self):

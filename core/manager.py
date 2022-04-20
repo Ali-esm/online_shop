@@ -33,5 +33,16 @@ class BaseManager(models.Manager):
         """
         return super().get_queryset().filter(is_deleted=True)
 
+    def create_order(self, **kwargs):
+        if not super().get_queryset().filter(status='U').exists():
+            return super().create(**kwargs)
+
+    def get_or_create_order(self, defaults=None, **kwargs):
+        if not super().get_queryset().filter(status='U').exists():
+            return super().get_or_create(defaults, **kwargs)
+
+
+
+
 
 

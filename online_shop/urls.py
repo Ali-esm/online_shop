@@ -18,7 +18,6 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
 
 from product.views import HotProductView
 
@@ -27,7 +26,8 @@ urlpatterns = i18n_patterns(
     path('', HotProductView.as_view(), name='home_view'),
     path('customer/', include('customer.urls')),
     path('product/', include('product.urls')),
+    path('order/', include('order.urls')),
 
     path('rosetta/', include('rosetta.urls')),
-    prefix_default_language=False,
+    prefix_default_language=True,
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 12:31+0000\n"
-"PO-Revision-Date: 2022-02-22 12:32+0000\n"
+"POT-Creation-Date: 2022-03-05 19:57+0000\n"
+"PO-Revision-Date: 2022-03-05 20:02+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -179,9 +179,69 @@ msgstr "کدپستی"
 msgid "Address"
 msgstr "آدرس"
 
-#: customer/models.py:44
+#: customer/models.py:44 templates/customer/_profile_list_group.html:15
 msgid "Addresses"
 msgstr "آدرس ها"
+
+#: order/models.py:12
+msgid "paid"
+msgstr "پرداخت شده"
+
+#: order/models.py:13
+msgid "unpaid"
+msgstr "پرداخت نشده"
+
+#: order/models.py:14
+msgid "canceled"
+msgstr "لغو شده"
+
+#: order/models.py:17 order/models.py:40
+msgid "order"
+msgstr "سفارش"
+
+#: order/models.py:18
+msgid "orders"
+msgstr "سفارشات"
+
+#: order/models.py:21
+#, fuzzy
+#| msgid "Customer"
+msgid "customer"
+msgstr "مشتری"
+
+#: order/models.py:23
+#, fuzzy
+#| msgid "zip code"
+msgid "off code"
+msgstr "کدپستی"
+
+#: order/models.py:24
+#, fuzzy
+#| msgid "set product price"
+msgid "total price"
+msgstr "قیمت محصول را وارد کنید"
+
+#: order/models.py:26
+msgid "status"
+msgstr "وضعیت"
+
+#: order/models.py:41
+#, fuzzy
+#| msgid "Product"
+msgid "product"
+msgstr "محصول"
+
+#: order/models.py:42
+msgid "quantity"
+msgstr "تعداد"
+
+#: order/models.py:45
+msgid "order item"
+msgstr "سفارش کالا"
+
+#: order/models.py:46
+msgid "order items"
+msgstr "سفارش کالاها"
 
 #: product/admin.py:19
 #, python-brace-format
@@ -301,46 +361,73 @@ msgstr "کد تخفیف"
 msgid "Off Codes"
 msgstr "کدهای تخفیف"
 
-#: templates/customer/login.html:22 templates/customer/signup.html:17
-#: templates/layout/_base.html:30
+#: templates/customer/_profile_list_group.html:6
+msgid "Information"
+msgstr "اطلاعات کاربری"
+
+#: templates/customer/_profile_list_group.html:7
+#: templates/customer/_profile_list_group.html:11
+#: templates/customer/_profile_list_group.html:16
+msgid "fa-chevron-right"
+msgstr "fa-chevron-left"
+
+#: templates/customer/_profile_list_group.html:10
+msgid "Orders"
+msgstr "سفارشات"
+
+#: templates/customer/login.html:23 templates/customer/signup.html:18
+#: templates/layout/__navbar.html:11
 msgid "Rayka"
 msgstr "رایکا"
 
-#: templates/customer/login.html:23 templates/customer/signup.html:29
-#: templates/layout/_base.html:65
+#: templates/customer/login.html:24 templates/customer/signup.html:30
+#: templates/layout/__navbar.html:97
 msgid "Login"
 msgstr "وارد شوید"
 
-#: templates/customer/login.html:24 templates/customer/signup.html:19
+#: templates/customer/login.html:25 templates/customer/signup.html:20
 msgid "Hello!"
 msgstr "سلام!"
 
-#: templates/customer/login.html:32
-#| msgid "Login"
+#: templates/customer/login.html:33
 msgid "login"
 msgstr "ورود"
 
-#: templates/customer/login.html:34 templates/customer/signup.html:18
-#: templates/customer/signup.html:27
+#: templates/customer/login.html:35 templates/customer/signup.html:19
+#: templates/customer/signup.html:28
 msgid "SignUp"
 msgstr "ثبت نام"
 
-#: templates/customer/signup.html:29
+#: templates/customer/signup.html:30
 msgid "Have Account? "
 msgstr "آیا حساب کاربری دارید؟"
 
-#: templates/layout/_base.html:11
-msgid "Rayka Shop"
-msgstr "فروشگاه رایکا"
-
-#: templates/layout/_base.html:36
+#: templates/layout/__navbar.html:17
 msgid "Home"
 msgstr "صفحه اصلی"
 
-#: templates/layout/_base.html:41
+#: templates/layout/__navbar.html:22
 msgid "Shop"
 msgstr "فروشگاه"
 
-#: templates/layout/_base.html:46
+#: templates/layout/__navbar.html:29
+#, fuzzy
+#| msgid "category"
+msgid "Category"
+msgstr "دسته بندی"
+
+#: templates/layout/__navbar.html:54
 msgid "Contact"
 msgstr "تماس با ما"
+
+#: templates/layout/__navbar.html:90
+msgid "profile"
+msgstr "پروفایل"
+
+#: templates/layout/__navbar.html:92
+msgid "logout"
+msgstr "خروج"
+
+#: templates/layout/_base.html:13
+msgid "Rayka Shop"
+msgstr "فروشگاه رایکا"

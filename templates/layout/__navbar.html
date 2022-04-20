@@ -1,8 +1,10 @@
 {% load i18n %}
-
+{% get_current_language as CURRENT_LANG %}
+{% get_available_languages as LANGS %}
+{% get_language_info_list for LANGS as languages %}
 <div class="container-fluid p-0 m-0">
-    <div class="row p-0 ">
-        <div class="col-12 col-lg-12 p-0 m-0">
+    <div class="row p-0">
+        <div class="col col-lg-12 p-0 m-0">
             <nav class="navbar navbar-expand navbar-light bg-light bg-white sticky-top p-0">
           <div class="container-fluid justify-content-between">
               <a class="navbar-brand" style="font-weight: bold; font-size: 25px" href="#">
@@ -29,13 +31,14 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for root in root_categories %}
                             <li>
-                                <a class="dropdown-item" href="#">{{ root.name }}</a>
+                                <a class="dropdown-item" href="{% url 'product:product_list' %}">{{ root.name }}</a>
 
                                 {% if root.category_set.all %}
                                 <ul class="dropdown-menu dropdown-submenu">
                                     {% for sub in root.category_set.all %}
                                     <li>
-                                        <a href="" class="dropdown-item">{{ sub.name }}</a>
+                                        <a href="{% url 'product:product_category' %}?category={{ sub.name }}" class="dropdown-item">{{ sub.name }}</a>
+{#                                        <a href="?category={{ sub.name }}" class="dropdown-item">{{ sub.name }}</a>#}
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -47,7 +50,7 @@
                     </li>
 
                   <li class="nav-item p-2">
-                      <a class="nav-link my-nav" aria-current="page" href="#">
+                      <a class="nav-link my-nav" aria-current="page" href="{% url 'customer:contact_view' %}">
                           {% trans "Contact" %}
                       </a>
                   </li>
@@ -55,36 +58,46 @@
 
               <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class='nav-link' href="#">
-                            <i class="fa fa-shopping-cart fa-lg position-relative" style="font-size: xx-large" aria-hidden="true">
-                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: x-small">
-                                    1
-                                  </span>
+                        <a class='nav-link' id="get-cart-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa fa-shopping-cart fa-lg position-relative" id="counter-parent" style="font-size: xx-large" aria-hidden="true">
                             </i>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="">{% if CUREENT_LANG == 'en' %}فا{% else %}En{% endif %}</a>
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ CURRENT_LANG }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for lang in languages %}
+                                <li>
+                                    <a class="dropdown-item" href="/{{ lang.code }}/" {% if lang.code == CURRENT_LANG %} class="selected" {% endif %}>
+                                        {{ lang.name_local }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </li>
-                        {% if  request.user.is_authenticated%}
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  {{ user.phone_number }}
-                              </a>
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#profile">{% trans "profile" %}</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url "customer:logout_view" %}">{% trans "logout" %}</a></li>
-                              </ul>
-                            </li>
-                        {% else %}
-                            <li>
-                                <a class="nav-link" href="{% url 'customer:login_view' %}">{% trans "Login" %}</a>
-                            </li>
-                        {% endif %}
+
+                    {% if  request.user.is_authenticated%}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              {{ user.phone_number }}
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'customer:profile_view' %}">{% trans "profile" %}</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url "customer:logout_view" %}">{% trans "logout" %}</a></li>
+                          </ul>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="nav-link" href="{% url 'customer:login_view' %}">{% trans "Login" %}</a>
+                        </li>
+                    {% endif %}
               </ul>
           </div>
     </nav>
         </div>
     </div>
+    {% include 'layout/__items_modal.html' %}
 </div>

@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 
     # Additional Installed app
     'core',
     'product',
     'customer',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +155,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
 
 LOGIN_URL = 'customer:login_view'
-LOGIN_REDIRECT_URL = 'home_view'
+LOGIN_REDIRECT_URL = 'customer:profile_view'
 LOGOUT_REDIRECT_URL = 'customer:login_view'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
