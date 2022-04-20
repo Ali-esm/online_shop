@@ -135,4 +135,14 @@ class ContactFormView(generic.FormView):
         return redirect(reverse('home_view'))
 
 
+class CustomerOrderView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        customer = Customer.objects.get(user__phone_number=request.user.phone_number)
+        customer_orders = customer.orders.all()
+        context = {
+            'orders': customer_orders,
+        }
+
+        return render(request, 'customer/orders.html', context=context)
 
