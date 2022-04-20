@@ -8,6 +8,7 @@ urlpatterns = [
     path('signup/', views.CustomerSignUpView.as_view(), name='signup_view'),
     path('logout/', views.CustomerLogoutView.as_view(), name='logout_view'),
     path('profile/', views.UserProfileUpdateView.as_view(), name='profile_view'),
+    path('orders/', views.CustomerOrderView.as_view(), name='order_view'),
     path('address/', views.CustomerAddressView.as_view(), name='address_view'),
     path('address/<int:pk>', views.CustomerAddressDeleteView.as_view(), name='delete_address'),
     path('edit-address/<int:pk>', views.CustomerAddressUpdateView.as_view(), name='edit_address'),
