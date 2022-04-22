@@ -115,6 +115,12 @@
                 },
                 body: formData,
             })
+            .then(response => {
+                window.location.assign("{% url 'customer:order_view' %}")
+            })
+            .catch((error) =>{
+                console.log('error', error)
+            })
         })
 
     </script>
