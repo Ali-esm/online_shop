@@ -42,26 +42,29 @@ class OrderItemsView(LoginRequiredMixin, View):
             return redirect(reverse('customer:address_view'))
         session_items = request.session.items()
         products = dict(filter(lambda k: k[0].startswith('p'), session_items))
-        order, created = Order.objects.get_or_create(status__exact='U',
-                                                     customer=customer,
-                                                     address=customer.address_set.first())
-        if created:
+
+        order = customer.orders.filter(status='U')
+        if not order.exists():
             if products:
+                order = Order.objects.create_order(customer=customer, address=customer.address_set.first())
                 for key, value in products.items():
                     product = Product.objects.get(id=int(key[1]))
                     OrderItem.objects.create(order=order, product=product, quantity=int(value))
+            else:
+                order = None
         else:
+            order = order.first()
             for key, value in products.items():
                 product = Product.objects.get(id=int(key[1]))
-                order: Order
                 if not order.orderitem_set.filter(product=product).exists():
                     OrderItem.objects.create(order=order, product=product, quantity=int(value))
 
         order_form = OrderForm(instance=order)
         addresses = customer.address_set.all()
         items = []
-        for item in order.orderitem_set.all():
-            items.append((OrderItemForm(instance=item), item))
+        if order is not None:
+            for item in order.orderitem_set.all():
+                items.append((OrderItemForm(instance=item), item))
         context = {
             'order': order,
             'order_form': order_form,
