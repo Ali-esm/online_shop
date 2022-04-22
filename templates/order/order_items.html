@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="container-fluid">
+    {% if order %}
     <div class="row justify-content-center">
         <div class="col col-lg-8">
             <table class="table table-dark table-borderless table-hover text-center">
@@ -86,6 +87,18 @@
             </a>
         </div>
     </div>
+    {% else %}
+        <div class="row justify-content-center my-5">
+            <div class="col col-lg-auto my-5">
+                <h1 class="display-3 text-muted my-5">
+                    You dont have any order yet.
+                    <span>
+                        <img src="https://media1.giphy.com/media/S44yTXUPWaCPcvi6HM/giphy.gif?cid=ecf05e47j21gd7ja3kqih86ar30pj7mz8mhsnnt9mt51pqv5&rid=giphy.gif&ct=s" alt="basket" width="150px">
+                    </span>
+                </h1>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
 
