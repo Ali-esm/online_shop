@@ -115,8 +115,16 @@
                 },
                 body: formData,
             })
-            .then(response => {
-                window.location.assign("{% url 'customer:order_view' %}")
+            .then(response => response.json())
+            .then(data => {
+                if (data['success']){
+                    window.location.assign("{% url 'customer:order_view' %}")
+                }else{
+                    swal({
+                        title: "Your cart is Empty!",
+                        icon: "warning",
+                    });
+                }
             })
             .catch((error) =>{
                 console.log('error', error)
