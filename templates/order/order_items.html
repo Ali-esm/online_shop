@@ -21,15 +21,15 @@
                 <tbody>
                     {% for item in items %}
                         <tr>
-                            <form id="{{ item.1.id }}">
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ item.1.product.name }}</td>
-                                {% for field in item.0.visible_fields %}<td>{{ field }}</td>{% endfor %}
-                                <td>{{ item.1.product.price }}$</td>
-                                <td>{{ item.1.get_price }}$</td>
-                            </form>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ item.1.product.name }}</td>
+                            {% for field in item.0.visible_fields %}
+                                <td id="item-count{{ item.1.id }}">{{ field }}</td>
+                            {% endfor %}
+                            <td id="item-price{{ item.1.id }}">{{ item.1.product.price }}$</td>
+                            <td id="item-total-price{{ item.1.id }}">{{ item.1.get_price }}$</td>
                             <td>
-                                <button class="btn btn-outline-success">
+                                <button class="btn btn-outline-success" onclick="editCount({{ item.1.id }})">
                                     {% trans "Edit count" %} <i class="fa fa-edit"></i>
                                 </button>
                                 <a href="{% url 'order:remove_item' %}?item={{ item.1.id }}"
@@ -131,5 +131,35 @@
             })
         })
 
+        function editCount(id){
+            let quantity = $(`#item-count${id}`).children().val()
+            if (Number(quantity)){
+                console.log('is not zero')
+                fetch(`{% url 'order:change_count' %}?item=${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        'quantity': quantity,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data =>{
+                    location.reload()
+                    console.log(data)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            }else{
+                swal({
+                    title: "Quantity can not be zero",
+                    icon: 'warning',
+                    button: 'Ok',
+                });
+            }
+        }
     </script>
 {% endblock %}
