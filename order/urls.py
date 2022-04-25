@@ -9,4 +9,5 @@ urlpatterns = [
     path('items/', views.OrderItemsView.as_view(), name='items_view'),
     path('remove-item/', views.RemoveOrderItem.as_view(), name='remove_item'),
     path('change-status/', views.ChangeOrderStatus.as_view(), name='change_status'),
+    path('change-count/', apis.OrderItemCountPartialUpdate.as_view(), name='change_count'),
 ]
