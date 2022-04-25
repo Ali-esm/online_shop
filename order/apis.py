@@ -1,4 +1,3 @@
-from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -22,3 +21,16 @@ class GetProductCookieAPIView(APIView):
                 product_list.append(product)
         products = ProductSerializer(product_list, many=True)
         return Response(products.data, status=200)
+
+
+class OrderItemCountPartialUpdate(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication]
+
+    def patch(self, request):
+        order_item = OrderItem.objects.get(id=request.GET['item'])
+        item_serializer = OrderItemSerializer(order_item, request.data, partial=True)
+        if item_serializer.is_valid():
+            item_serializer.save()
+            return Response(data=item_serializer.data, status=201)
+        return Response(data=item_serializer.errors, status=400)
