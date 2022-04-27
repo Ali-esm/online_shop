@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser, UserManager
-from django.utils.datetime_safe import datetime
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from .manager import BaseManager
@@ -99,7 +99,7 @@ class BaseDiscount(models.Model):
         check expire time past or not
         :return: bool
         """
-        if self.expire_time <= datetime.now():
+        if self.expire_time <= timezone.now():
             return True
         return False
 
