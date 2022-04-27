@@ -28,6 +28,12 @@ class Order(BaseModel):
     status = models.CharField(max_length=1, choices=Status.choices, default=Status.UNPAID,
                               verbose_name=_('status'))
 
+    def off_code_used(self):
+        """
+        to check order used an off code or not
+        """
+        return bool(self.off_code)
+
     @property
     def get_total_price(self):
         """
@@ -37,10 +43,9 @@ class Order(BaseModel):
 
     @property
     def get_final_price(self):
-        if self.off_code is None:
+        if not self.off_code_used():
             return self.get_total_price
         profit = self.off_code.profit_amount(self.get_total_price)
-        profit = 0 if profit is None else profit
         return self.get_total_price - profit
 
     def __str__(self):
