@@ -1,6 +1,6 @@
 import json
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -95,9 +95,12 @@ class ChangeOrderStatus(LoginRequiredMixin, View):
         order.address = Address.objects.get(id=request.POST.get('addr', 1))
         order.total_price = order.get_total_price
         order.final_price = order.get_final_price
-        if request.GET['status'] == 'P':
-            order.status = order.Status.PAID
-        elif request.GET['status'] == 'C':
-            order.status = order.Status.CANCELED
-        order.save()
-        return redirect(reverse('customer:profile_view'))
+        if order.orderitem_set.exists():
+            if request.GET['status'] == 'P':
+                order.status = order.Status.PAID
+            elif request.GET['status'] == 'C':
+                order.status = order.Status.CANCELED
+            order.save()
+            return JsonResponse({'success': 1})
+        else:
+            return JsonResponse({'failed': 0})

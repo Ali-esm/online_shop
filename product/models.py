@@ -32,6 +32,12 @@ class Product(BaseModel):
             self.is_exist = True
             self.save()
 
+    @property
+    def get_discount(self):
+        profit = self.discount.profit_amount(self.price)
+        profit = profit if profit else 0
+        return self.price - profit
+
 
 class Category(BaseModel):
     name = models.CharField(max_length=100, verbose_name=_('name'))
@@ -73,8 +79,6 @@ class OffCode(BaseDiscount):
                                             help_text=_('maximum value of discount'))
     code = models.CharField(max_length=10, verbose_name=_('discount code'),
                             help_text=_('set code for discount'))
-    used = models.BooleanField(default=False, verbose_name=_('is used'),
-                               help_text=_('set off code used or not'))
 
     class Meta:
         verbose_name = _('Off Code')
@@ -82,10 +86,10 @@ class OffCode(BaseDiscount):
 
     def profit_amount(self, price: int):
         """
-        Customization profit_amount for check if off code not used & not expired calculate profit
+        to calculate profit amount of off_code
         """
-        if self.used or self.is_expire():
-            return None
+        if self.is_expire():
+            return 0
         elif self.type == 'PR':
             return min(self.amount, price)
         raw_profit = int((self.amount / 100) * price)
