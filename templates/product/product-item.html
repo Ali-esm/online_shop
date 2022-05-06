@@ -2,13 +2,26 @@
     <div class="col-12 col-lg-3 m-2">
         <div class="card" style="width: 18rem;">
             <img src="{{ product.image.url }}" class="card-img-top" height="200" alt="{{ product.name }}">
-            <div class="card-body">
+            <div class="card-body text-center">
                 <h5 class="card-title">
-                    <a href="{% url 'product:product_detail' product.id %}">{{ product.name }}</a>
+                    <p>{{ product.name }}</p>
                 </h5>
-                <p class="card-text">{{ product.price }}$</p>
+                {% if product.discount %}
+                    <span class="card-text" style="color: red"><s>{{ product.price }}</s>$</span>
+                    <span>{{ product.get_discount }}$</span>
+                    <p></p>
+                {% else %}
+                    <p class="card-text">{{ product.price }}$</p>
+                {% endif %}
                 <p class="card-text">{{ product.brand }} brand</p>
-                <a class="btn btn-primary add-to-cart" product-id="{{ product.id }}">Add to card +</a>
+                <a class="btn btn-outline-success add-to-cart" product-id="{{ product.id }}">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    Add
+                </a>
+                <a class="btn btn-outline-primary" href="{% url 'product:product_detail' product.id %}">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    Detail
+                </a>
             </div>
          </div>
     </div>

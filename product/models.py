@@ -32,6 +32,12 @@ class Product(BaseModel):
             self.is_exist = True
             self.save()
 
+    @property
+    def get_discount(self):
+        profit = self.discount.profit_amount(self.price)
+        profit = profit if profit else 0
+        return self.price - profit
+
 
 class Category(BaseModel):
     name = models.CharField(max_length=100, verbose_name=_('name'))
