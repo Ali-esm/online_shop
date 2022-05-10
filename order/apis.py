@@ -48,7 +48,9 @@ class OrderOffCodeAPIView(APIView):
             serializer = OffCodeSerializer(data=request.data)
             if serializer.is_valid():
                 off_code = OffCode.objects.get(code__exact=serializer.validated_data['code'])
-                order.off_code = off_code
-                order.save()
-                return Response(data={'ok': 1}, status=201)
+                if not off_code.is_expire():
+                    order.off_code = off_code
+                    order.save()
+                    return Response(data={'ok': 1}, status=201)
+                return Response(data={'fail': 0}, status=400)
         return Response(data={'fail': 0}, status=400)
