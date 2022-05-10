@@ -84,6 +84,9 @@ class OffCode(BaseDiscount):
         verbose_name = _('Off Code')
         verbose_name_plural = _('Off Codes')
 
+    def __str__(self):
+        return f'{self.code}'
+
     def profit_amount(self, price: int):
         """
         to calculate profit amount of off_code
