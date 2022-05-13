@@ -26,4 +26,4 @@ class HotProductView(generic.ListView):
     model = Product
     template_name = "product/landing.html"
     context_object_name = "products"
-    queryset = Product.objects.all()[:3]
+    queryset = Product.objects.all().order_by("-id")[:6]
