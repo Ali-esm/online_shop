@@ -7,7 +7,7 @@ class ProductListView(generic.ListView):
     model = Product
     template_name = "product/product-list.html"
     context_object_name = "products"
-    paginate_by = 15
+    paginate_by = 6
 
     def get(self, request, *args, **kwargs):
         category = request.GET.get("category", None)
