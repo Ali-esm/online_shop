@@ -1,0 +1,38 @@
+{% extends 'customer/profile.html' %}
+{% load i18n %}
+{% block profile_content %}
+    <div class="col-md-5 col-sm-3">
+        <table class="charts-css column data-spacing-20 show-data-axes show-labels">
+            <tbody>
+                <tr>
+                    <th scope="row">last month</th>
+                    <td style="--size: calc( 40 / 100 )"> $40K </td>
+                </tr>
+                <tr>
+                    <th scope="row">2 month's ago</th>
+                    <td style="--size: calc( 75 / 100 );"> $75K </td>
+                </tr>
+                <tr>
+                    <th scope="row">3 month's ago</th>
+                    <td style="--size: calc( 100 / 100 ); --color: lightgreen;"> $100K </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-3 col-sm-3">
+        <p class="text-center">{% trans "last orders" %}</p>
+        <ul class="list-group list-group-numbered">
+            {% for order in last_orders %}
+                <li class="list-group-item list-group-item-action">
+                    <span>{{ order.get_status_display }}</span>
+                    <span class="badge bg-primary rounded-pill">{{ order.final_price }}$</span>
+                </li>
+            {% endfor %}
+            <a class="list-group-item list-group-item-action text-center list-group-item-primary" href="{% url "customer:order_view" %}">
+                {% translate "All orders" %}
+            </a>
+
+        </ul>
+
+    </div>
+{% endblock %}

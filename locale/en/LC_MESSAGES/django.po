@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-05 19:57+0000\n"
-"PO-Revision-Date: 2022-02-15 16:29+0000\n"
+"POT-Creation-Date: 2022-05-17 19:10+0000\n"
+"PO-Revision-Date: 2022-05-17 19:12+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -95,32 +95,36 @@ msgstr ""
 msgid "Phone number length is 11 and must starts with 09"
 msgstr ""
 
-#: customer/forms.py:12 customer/forms.py:53 customer/forms.py:75
+#: customer/forms.py:16 customer/forms.py:72 customer/forms.py:95
 msgid "Password"
 msgstr ""
 
-#: customer/forms.py:17
+#: customer/forms.py:23
 msgid "Confirm Password"
 msgstr ""
 
-#: customer/forms.py:32 customer/forms.py:71
+#: customer/forms.py:40 customer/forms.py:91
 msgid "Phone"
 msgstr ""
 
-#: customer/forms.py:36
+#: customer/forms.py:46
 msgid "First Name"
 msgstr ""
 
-#: customer/forms.py:40
+#: customer/forms.py:52
 msgid "Last Name"
 msgstr ""
 
-#: customer/forms.py:48
+#: customer/forms.py:63
 msgid "Phone number"
 msgstr ""
 
-#: customer/forms.py:61
+#: customer/forms.py:81
 msgid "Phone Number or Password is Incorrect"
+msgstr ""
+
+#: customer/forms.py:139
+msgid "Zip code length must be 10"
 msgstr ""
 
 #: customer/models.py:10
@@ -167,7 +171,7 @@ msgstr ""
 msgid "alley"
 msgstr ""
 
-#: customer/models.py:38
+#: customer/models.py:38 templates/customer/profile_address_list.html:12
 msgid "NO"
 msgstr ""
 
@@ -175,11 +179,11 @@ msgstr ""
 msgid "zip code"
 msgstr ""
 
-#: customer/models.py:43
+#: customer/models.py:43 templates/order/order_items.html:45
 msgid "Address"
 msgstr ""
 
-#: customer/models.py:44 templates/customer/_profile_list_group.html:15
+#: customer/models.py:44 templates/customer/_profile_list_group.html:16
 msgid "Addresses"
 msgstr ""
 
@@ -195,7 +199,7 @@ msgstr ""
 msgid "canceled"
 msgstr ""
 
-#: order/models.py:17 order/models.py:40
+#: order/models.py:17 order/models.py:56
 msgid "order"
 msgstr ""
 
@@ -208,30 +212,39 @@ msgid "customer"
 msgstr ""
 
 #: order/models.py:23
+msgid "address"
+msgstr ""
+
+#: order/models.py:25
 msgid "off code"
 msgstr ""
 
-#: order/models.py:24
+#: order/models.py:26 templates/order/order_items.html:17
+#: templates/order/order_items.html:74
 msgid "total price"
 msgstr ""
 
-#: order/models.py:26
+#: order/models.py:27
+msgid "final price"
+msgstr ""
+
+#: order/models.py:29
 msgid "status"
 msgstr ""
 
-#: order/models.py:41
+#: order/models.py:57 templates/order/order_items.html:14
 msgid "product"
 msgstr ""
 
-#: order/models.py:42
+#: order/models.py:58 templates/order/order_items.html:15
 msgid "quantity"
 msgstr ""
 
-#: order/models.py:45
+#: order/models.py:61
 msgid "order item"
 msgstr ""
 
-#: order/models.py:46
+#: order/models.py:62
 msgid "order items"
 msgstr ""
 
@@ -257,7 +270,7 @@ msgstr ""
 msgid "brand name"
 msgstr ""
 
-#: product/models.py:10
+#: product/models.py:10 templates/order/order_items.html:16
 msgid "price"
 msgstr ""
 
@@ -293,78 +306,81 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: product/models.py:37 product/models.py:61
+#: product/models.py:43 product/models.py:67
 msgid "name"
 msgstr ""
 
-#: product/models.py:38
+#: product/models.py:44
 msgid "is sub"
 msgstr ""
 
-#: product/models.py:40
+#: product/models.py:46
 msgid "parent"
 msgstr ""
 
-#: product/models.py:43
+#: product/models.py:49 templates/layout/__navbar.html:29
 msgid "category"
 msgstr ""
 
-#: product/models.py:44
+#: product/models.py:50
 msgid "categories"
 msgstr ""
 
-#: product/models.py:64
+#: product/models.py:70
 msgid "Discount"
 msgstr ""
 
-#: product/models.py:65
+#: product/models.py:71
 msgid "Discounts"
 msgstr ""
 
-#: product/models.py:72
+#: product/models.py:78
 msgid "maximum value"
 msgstr ""
 
-#: product/models.py:73
+#: product/models.py:79
 msgid "maximum value of discount"
 msgstr ""
 
-#: product/models.py:74
+#: product/models.py:80
 msgid "discount code"
 msgstr ""
 
-#: product/models.py:75
+#: product/models.py:81
 msgid "set code for discount"
 msgstr ""
 
-#: product/models.py:76
-msgid "is used"
-msgstr ""
-
-#: product/models.py:77
-msgid "set off code used or not"
-msgstr ""
-
-#: product/models.py:80
+#: product/models.py:84 templates/order/order_items.html:61
 msgid "Off Code"
 msgstr ""
 
-#: product/models.py:81
+#: product/models.py:85
 msgid "Off Codes"
 msgstr ""
 
 #: templates/customer/_profile_list_group.html:6
+msgid "Dashboard"
+msgstr ""
+
+#: templates/customer/_profile_list_group.html:9
 msgid "Information"
 msgstr ""
 
-#: templates/customer/_profile_list_group.html:7
-#: templates/customer/_profile_list_group.html:11
-#: templates/customer/_profile_list_group.html:16
-msgid "fa-chevron-right"
+#: templates/customer/_profile_list_group.html:12
+msgid "Orders"
 msgstr ""
 
-#: templates/customer/_profile_list_group.html:10
-msgid "Orders"
+#: templates/customer/_profile_list_group.html:19
+#: templates/layout/__navbar.html:89
+msgid "logout"
+msgstr ""
+
+#: templates/customer/dashboard.html:23
+msgid "last orders"
+msgstr ""
+
+#: templates/customer/dashboard.html:32
+msgid "All orders"
 msgstr ""
 
 #: templates/customer/login.html:23 templates/customer/signup.html:18
@@ -373,7 +389,7 @@ msgid "Rayka"
 msgstr ""
 
 #: templates/customer/login.html:24 templates/customer/signup.html:30
-#: templates/layout/__navbar.html:97
+#: templates/layout/__navbar.html:94
 msgid "Login"
 msgstr ""
 
@@ -390,8 +406,76 @@ msgstr ""
 msgid "SignUp"
 msgstr ""
 
+#: templates/customer/orders.html:8
+msgid "order number #"
+msgstr ""
+
+#: templates/customer/orders.html:9
+msgid "finall price:"
+msgstr ""
+
+#: templates/customer/orders.html:10 templates/customer/orders.html:16
+msgid "order status:"
+msgstr ""
+
+#: templates/customer/orders.html:15
+msgid "address to delivery:"
+msgstr ""
+
+#: templates/customer/orders.html:17
+msgid "total price:"
+msgstr ""
+
+#: templates/customer/orders.html:18
+msgid "final price:"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:9
+msgid "City"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:10
+msgid "Province"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:11
+msgid "Alley"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:13
+msgid "Zip Code"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:14
+msgid "Delete"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:15
+msgid "Edit"
+msgstr ""
+
+#: templates/customer/profile_address_list.html:43
+msgid "New address"
+msgstr ""
+
 #: templates/customer/signup.html:30
 msgid "Have Account? "
+msgstr ""
+
+#: templates/customer/user_form.html:14
+msgid "Save"
+msgstr ""
+
+#: templates/layout/__items_modal.html:8
+msgid "Order Items"
+msgstr ""
+
+#: templates/layout/__items_modal.html:20
+msgid "Submit"
+msgstr ""
+
+#: templates/layout/__items_modal.html:22
+msgid "login to submit"
 msgstr ""
 
 #: templates/layout/__navbar.html:17
@@ -402,22 +486,66 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
-#: templates/layout/__navbar.html:29
-msgid "Category"
-msgstr ""
-
 #: templates/layout/__navbar.html:54
 msgid "Contact"
 msgstr ""
 
-#: templates/layout/__navbar.html:90
-msgid "profile"
-msgstr ""
-
-#: templates/layout/__navbar.html:92
-msgid "logout"
+#: templates/layout/__navbar.html:87
+msgid "dashboard"
 msgstr ""
 
 #: templates/layout/_base.html:13
 msgid "Rayka Shop"
+msgstr ""
+
+#: templates/order/order_items.html:18
+msgid "update"
+msgstr ""
+
+#: templates/order/order_items.html:33
+msgid "Edit count"
+msgstr ""
+
+#: templates/order/order_items.html:37
+msgid "Remove"
+msgstr ""
+
+#: templates/order/order_items.html:51
+msgid "Select your address to send your order"
+msgstr ""
+
+#: templates/order/order_items.html:55
+msgid "add new address"
+msgstr ""
+
+#: templates/order/order_items.html:64 templates/order/order_items.html:67
+msgid "Apply"
+msgstr ""
+
+#: templates/order/order_items.html:72
+msgid "order price"
+msgstr ""
+
+#: templates/order/order_items.html:77
+msgid "fianl price"
+msgstr ""
+
+#: templates/order/order_items.html:87
+msgid "payment"
+msgstr ""
+
+#: templates/order/order_items.html:91
+msgid "cancel"
+msgstr ""
+
+#: templates/product/landing.html:13
+msgid "Latest products"
+msgstr ""
+
+#: templates/product/product-item.html:20
+msgid "Add"
+msgstr ""
+
+#: templates/product/product-item.html:24
+msgid "Detail"
 msgstr ""

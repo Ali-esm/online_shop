@@ -1,17 +1,18 @@
 {% extends 'customer/profile.html' %}
+{% load i18n %}
 {% block profile_content %}
     <div class="col-md-8 col-sm-7">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">City</th>
-              <th scope="col">Province</th>
-              <th scope="col">Alley</th>
-              <th scope="col">No</th>
-              <th scope="col">Zip Code</th>
-              <th scope="col">Delete</th>
-              <th scope="col">Edit</th>
+              <th scope="col">{% trans "City"%}</th>
+              <th scope="col">{% trans "Province" %}</th>
+              <th scope="col">{% trans "Alley" %}</th>
+              <th scope="col">{% trans "NO" %}</th>
+              <th scope="col">{% trans "Zip Code" %}</th>
+              <th scope="col">{% trans "Delete" %}</th>
+              <th scope="col">{% trans "Edit" %}</th>
             </tr>
           </thead>
 
@@ -39,7 +40,7 @@
           </tbody>
         </table>
         <a class="btn btn-primary btn-sm" href="{% url 'customer:new_address' %}">
-            <span>New address</span>
+            <span>{% trans "New address" %}</span>
             <i class="fa fa-plus-square" aria-hidden="true"></i>
         </a>
     </div>

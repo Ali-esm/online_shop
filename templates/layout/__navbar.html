@@ -26,7 +26,7 @@
                   <!-- DropDown Category Menu -->
                     <li class="nav-item dropdown p-2">
                         <a class="nav-link dropdown-toggle my-nav" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% trans "Category" %}
+                            {% trans "category" %}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for root in root_categories %}
@@ -84,7 +84,7 @@
                               {{ user.phone_number }}
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'customer:profile_view' %}">{% trans "profile" %}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'customer:dashboard_view' %}">{% trans "dashboard" %}</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url "customer:logout_view" %}">{% trans "logout" %}</a></li>
                           </ul>

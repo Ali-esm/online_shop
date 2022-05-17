@@ -1,18 +1,21 @@
 {% extends 'customer/profile.html' %}
+{% load i18n %}
 {% block profile_content %}
     <div class="col-md-8 col-sm-7 text-center">
         {% for order in orders %}
             <p>
               <a class="btn btn-success col-12" {% if order.status == 'U' %} style="background-color: yellow; color: black; border-color: yellow" {% elif order.status == 'C' %}style="background-color: tomato; color: black; border-color: tomato"{% endif %} data-bs-toggle="collapse" href="#order{{ order.id }}" role="button" aria-expanded="false" aria-controls="order{{ order.id }}">
-                  order #{{ order.id }} finall_price: {{ order.final_price }} status: {{ order.get_status_display }}
+                  <span>{% trans "order number #" %}{{ order.id }}</span>
+                  <span>{% trans "finall price:" %}{{ order.final_price }}</span>
+                  <span>{% trans "order status:" %} {{ order.get_status_display }}</span>
               </a>
             </p>
             <div class="collapse" id="order{{ order.id }}">
               <div class="card card-body mb-2">
-                    <p>address to delivery: {{ order.address }}</p>
-                    <p>order status: {{ order.get_status_display }}</p>
-                    <p>total price: {{ order.total_price }}</p>
-                    <p>final price: {{ order.final_price }}</p>
+                    <p>{% trans "address to delivery:" %}{{ order.address }}</p>
+                    <p>{% trans "order status:" %} {{ order.get_status_display }}</p>
+                    <p>{% trans "total price:" %} {{ order.total_price }}</p>
+                    <p>{% trans "final price:" %} {{ order.final_price }}</p>
               </div>
             </div>
         {% endfor %}

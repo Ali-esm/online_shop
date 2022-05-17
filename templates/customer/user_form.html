@@ -1,5 +1,6 @@
 {% extends 'customer/profile.html' %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block profile_content %}
     <div class="col-md-8 col-sm-7 text-center">
@@ -10,8 +11,7 @@
                 {% endfor %}
             </div>
 
-            <input class="btn btn-primary mt-3" type="submit" value="Save">
-            <a class="btn btn-secondary mt-3" href="{% url 'customer:profile_view' %}">Back</a>
+            <input class="btn btn-primary mt-3" type="submit" value="{% trans "Save" %}">
         </form>
     </div>
 {% endblock %}

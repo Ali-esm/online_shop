@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-05 19:57+0000\n"
-"PO-Revision-Date: 2022-03-05 20:02+0000\n"
+"POT-Creation-Date: 2022-05-17 19:10+0000\n"
+"PO-Revision-Date: 2022-05-17 19:16+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -95,33 +95,37 @@ msgstr "زمان و تاریخ انقضا را مشخص کنید"
 msgid "Phone number length is 11 and must starts with 09"
 msgstr "شماره همراه باید ۱۱ رقم باشد و با ۰۹ شروع شود"
 
-#: customer/forms.py:12 customer/forms.py:53 customer/forms.py:75
+#: customer/forms.py:16 customer/forms.py:72 customer/forms.py:95
 msgid "Password"
 msgstr "رمز عبور"
 
-#: customer/forms.py:17
+#: customer/forms.py:23
 msgid "Confirm Password"
 msgstr "تائيد رمز عبور"
 
-#: customer/forms.py:32 customer/forms.py:71
+#: customer/forms.py:40 customer/forms.py:91
 msgid "Phone"
 msgstr "شماره همراه"
 
-#: customer/forms.py:36
+#: customer/forms.py:46
 msgid "First Name"
 msgstr "نام"
 
-#: customer/forms.py:40
+#: customer/forms.py:52
 msgid "Last Name"
 msgstr "نام خانوادگی"
 
-#: customer/forms.py:48
+#: customer/forms.py:63
 msgid "Phone number"
 msgstr "شماره همراه"
 
-#: customer/forms.py:61
+#: customer/forms.py:81
 msgid "Phone Number or Password is Incorrect"
 msgstr "شماره همراه یا رمز عبور نادرست می باشد"
+
+#: customer/forms.py:139
+msgid "Zip code length must be 10"
+msgstr "کدپستی باید ۱۰ رقم باشد"
 
 #: customer/models.py:10
 msgid "male"
@@ -167,7 +171,7 @@ msgstr "خیابان"
 msgid "alley"
 msgstr "کوچه"
 
-#: customer/models.py:38
+#: customer/models.py:38 templates/customer/profile_address_list.html:12
 msgid "NO"
 msgstr "پلاک"
 
@@ -175,11 +179,11 @@ msgstr "پلاک"
 msgid "zip code"
 msgstr "کدپستی"
 
-#: customer/models.py:43
+#: customer/models.py:43 templates/order/order_items.html:45
 msgid "Address"
 msgstr "آدرس"
 
-#: customer/models.py:44 templates/customer/_profile_list_group.html:15
+#: customer/models.py:44 templates/customer/_profile_list_group.html:16
 msgid "Addresses"
 msgstr "آدرس ها"
 
@@ -195,7 +199,7 @@ msgstr "پرداخت نشده"
 msgid "canceled"
 msgstr "لغو شده"
 
-#: order/models.py:17 order/models.py:40
+#: order/models.py:17 order/models.py:56
 msgid "order"
 msgstr "سفارش"
 
@@ -204,42 +208,46 @@ msgid "orders"
 msgstr "سفارشات"
 
 #: order/models.py:21
-#, fuzzy
 #| msgid "Customer"
 msgid "customer"
 msgstr "مشتری"
 
 #: order/models.py:23
-#, fuzzy
-#| msgid "zip code"
+#| msgid "Address"
+msgid "address"
+msgstr "آدرس"
+
+#: order/models.py:25
 msgid "off code"
-msgstr "کدپستی"
+msgstr "کد تخفیف"
 
-#: order/models.py:24
-#, fuzzy
-#| msgid "set product price"
+#: order/models.py:26 templates/order/order_items.html:17
+#: templates/order/order_items.html:74
 msgid "total price"
-msgstr "قیمت محصول را وارد کنید"
+msgstr "قیمت کل"
 
-#: order/models.py:26
+#: order/models.py:27
+msgid "final price"
+msgstr "قیمت نهایی"
+
+#: order/models.py:29
 msgid "status"
 msgstr "وضعیت"
 
-#: order/models.py:41
-#, fuzzy
+#: order/models.py:57 templates/order/order_items.html:14
 #| msgid "Product"
 msgid "product"
 msgstr "محصول"
 
-#: order/models.py:42
+#: order/models.py:58 templates/order/order_items.html:15
 msgid "quantity"
 msgstr "تعداد"
 
-#: order/models.py:45
+#: order/models.py:61
 msgid "order item"
 msgstr "سفارش کالا"
 
-#: order/models.py:46
+#: order/models.py:62
 msgid "order items"
 msgstr "سفارش کالاها"
 
@@ -265,7 +273,7 @@ msgstr "نام محصول"
 msgid "brand name"
 msgstr "برند محصول"
 
-#: product/models.py:10
+#: product/models.py:10 templates/order/order_items.html:16
 msgid "price"
 msgstr "قیمت"
 
@@ -301,79 +309,84 @@ msgstr "محصول"
 msgid "Products"
 msgstr "محصولات"
 
-#: product/models.py:37 product/models.py:61
+#: product/models.py:43 product/models.py:67
 msgid "name"
 msgstr "نام"
 
-#: product/models.py:38
+#: product/models.py:44
 msgid "is sub"
 msgstr "زیر گروه"
 
-#: product/models.py:40
+#: product/models.py:46
 msgid "parent"
 msgstr "دسته بندی والد"
 
-#: product/models.py:43
+#: product/models.py:49 templates/layout/__navbar.html:29
 msgid "category"
 msgstr "دسته بندی"
 
-#: product/models.py:44
+#: product/models.py:50
 msgid "categories"
 msgstr "دسته بندی ها"
 
-#: product/models.py:64
+#: product/models.py:70
 msgid "Discount"
 msgstr "تخفیف"
 
-#: product/models.py:65
+#: product/models.py:71
 msgid "Discounts"
 msgstr "تخفیف ها"
 
-#: product/models.py:72
+#: product/models.py:78
 msgid "maximum value"
 msgstr "بیشترین مقدار"
 
-#: product/models.py:73
+#: product/models.py:79
 msgid "maximum value of discount"
 msgstr "بیشترین مقدار تخفیف"
 
-#: product/models.py:74
+#: product/models.py:80
 msgid "discount code"
 msgstr "کد تخفیف"
 
-#: product/models.py:75
+#: product/models.py:81
 msgid "set code for discount"
 msgstr "کد تخفیف را ثبت کنید"
 
-#: product/models.py:76
-msgid "is used"
-msgstr "استفاده شده"
-
-#: product/models.py:77
-msgid "set off code used or not"
-msgstr "کد تخفیف استفاده شده یا خیر؟"
-
-#: product/models.py:80
+#: product/models.py:84 templates/order/order_items.html:61
 msgid "Off Code"
 msgstr "کد تخفیف"
 
-#: product/models.py:81
+#: product/models.py:85
 msgid "Off Codes"
 msgstr "کدهای تخفیف"
 
 #: templates/customer/_profile_list_group.html:6
+msgid "Dashboard"
+msgstr "داشبور"
+
+#: templates/customer/_profile_list_group.html:9
 msgid "Information"
 msgstr "اطلاعات کاربری"
 
-#: templates/customer/_profile_list_group.html:7
-#: templates/customer/_profile_list_group.html:11
-#: templates/customer/_profile_list_group.html:16
-msgid "fa-chevron-right"
-msgstr "fa-chevron-left"
-
-#: templates/customer/_profile_list_group.html:10
+#: templates/customer/_profile_list_group.html:12
 msgid "Orders"
 msgstr "سفارشات"
+
+#: templates/customer/_profile_list_group.html:19
+#: templates/layout/__navbar.html:89
+msgid "logout"
+msgstr "خروج"
+
+#: templates/customer/dashboard.html:23
+#| msgid "orders"
+msgid "last orders"
+msgstr "اخرین سفارشات"
+
+#: templates/customer/dashboard.html:32
+#| msgid "orders"
+msgid "All orders"
+msgstr "تمام سفارش ها"
 
 #: templates/customer/login.html:23 templates/customer/signup.html:18
 #: templates/layout/__navbar.html:11
@@ -381,7 +394,7 @@ msgid "Rayka"
 msgstr "رایکا"
 
 #: templates/customer/login.html:24 templates/customer/signup.html:30
-#: templates/layout/__navbar.html:97
+#: templates/layout/__navbar.html:94
 msgid "Login"
 msgstr "وارد شوید"
 
@@ -398,9 +411,82 @@ msgstr "ورود"
 msgid "SignUp"
 msgstr "ثبت نام"
 
+#: templates/customer/orders.html:8
+msgid "order number #"
+msgstr "شماره سفارش"
+
+#: templates/customer/orders.html:9
+msgid "finall price:"
+msgstr "قیمت نهایی:"
+
+#: templates/customer/orders.html:10 templates/customer/orders.html:16
+msgid "order status:"
+msgstr "وضعیت سفارش:"
+
+#: templates/customer/orders.html:15
+msgid "address to delivery:"
+msgstr "آدرس ارسالی:"
+
+#: templates/customer/orders.html:17
+msgid "total price:"
+msgstr "قیمت کل:"
+
+#: templates/customer/orders.html:18
+msgid "final price:"
+msgstr "قیمت نهایی:"
+
+#: templates/customer/profile_address_list.html:9
+msgid "City"
+msgstr "شهر"
+
+#: templates/customer/profile_address_list.html:10
+#| msgid "province"
+msgid "Province"
+msgstr "استان"
+
+#: templates/customer/profile_address_list.html:11
+#| msgid "alley"
+msgid "Alley"
+msgstr "کوچه"
+
+#: templates/customer/profile_address_list.html:13
+#| msgid "Off Code"
+msgid "Zip Code"
+msgstr "کد تخفیف"
+
+#: templates/customer/profile_address_list.html:14
+#| msgid "delete"
+msgid "Delete"
+msgstr "حذف "
+
+#: templates/customer/profile_address_list.html:15
+msgid "Edit"
+msgstr "ویرایش"
+
+#: templates/customer/profile_address_list.html:43
+msgid "New address"
+msgstr "آدرس جدید"
+
 #: templates/customer/signup.html:30
 msgid "Have Account? "
 msgstr "آیا حساب کاربری دارید؟"
+
+#: templates/customer/user_form.html:14
+msgid "Save"
+msgstr "ذخیره"
+
+#: templates/layout/__items_modal.html:8
+#| msgid "order items"
+msgid "Order Items"
+msgstr "سفارش کالاها"
+
+#: templates/layout/__items_modal.html:20
+msgid "Submit"
+msgstr "تایید سفارش"
+
+#: templates/layout/__items_modal.html:22
+msgid "login to submit"
+msgstr "برای تایید وارد شوید"
 
 #: templates/layout/__navbar.html:17
 msgid "Home"
@@ -410,24 +496,84 @@ msgstr "صفحه اصلی"
 msgid "Shop"
 msgstr "فروشگاه"
 
-#: templates/layout/__navbar.html:29
-#, fuzzy
-#| msgid "category"
-msgid "Category"
-msgstr "دسته بندی"
-
 #: templates/layout/__navbar.html:54
 msgid "Contact"
 msgstr "تماس با ما"
 
-#: templates/layout/__navbar.html:90
-msgid "profile"
-msgstr "پروفایل"
-
-#: templates/layout/__navbar.html:92
-msgid "logout"
-msgstr "خروج"
+#: templates/layout/__navbar.html:87
+#| msgid "Dashboard"
+msgid "dashboard"
+msgstr "داشبور"
 
 #: templates/layout/_base.html:13
 msgid "Rayka Shop"
 msgstr "فروشگاه رایکا"
+
+#: templates/order/order_items.html:18
+#| msgid "last update"
+msgid "update"
+msgstr "اخرین بروزرسانی"
+
+#: templates/order/order_items.html:33
+msgid "Edit count"
+msgstr "ویرایش تعداد"
+
+#: templates/order/order_items.html:37
+msgid "Remove"
+msgstr "حذف"
+
+#: templates/order/order_items.html:51
+msgid "Select your address to send your order"
+msgstr "آدرس خود را برای ارسال محصول انتخاب کنید"
+
+#: templates/order/order_items.html:55
+msgid "add new address"
+msgstr "اضافه کردن آدرس جدید"
+
+#: templates/order/order_items.html:64 templates/order/order_items.html:67
+msgid "Apply"
+msgstr "اعمال"
+
+#: templates/order/order_items.html:72
+msgid "order price"
+msgstr "قیمت کل"
+
+#: templates/order/order_items.html:77
+msgid "fianl price"
+msgstr "قیمت نهایی"
+
+#: templates/order/order_items.html:87
+msgid "payment"
+msgstr "پرداخت"
+
+#: templates/order/order_items.html:91
+msgid "cancel"
+msgstr "لغو"
+
+#: templates/product/landing.html:13
+msgid "Latest products"
+msgstr "آخرین محصولات"
+
+#: templates/product/product-item.html:20
+msgid "Add"
+msgstr "اضافه کردن"
+
+#: templates/product/product-item.html:24
+msgid "Detail"
+msgstr "جزئیات"
+
+#~ msgid "fa-chevron-right"
+#~ msgstr "fa-chevron-left"
+
+#~ msgid "profile"
+#~ msgstr "پروفایل"
+
+#~ msgid "is used"
+#~ msgstr "استفاده شده"
+
+#~ msgid "set off code used or not"
+#~ msgstr "کد تخفیف استفاده شده یا خیر؟"
+
+#, fuzzy
+#~ msgid "Category"
+#~ msgstr "دسته بندی"

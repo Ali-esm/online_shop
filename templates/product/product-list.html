@@ -2,14 +2,33 @@
 {% block content %}
     {% include 'product/carousel.html' %}
 
-    <div class="row justify-content-center mb-5 p-0">
+    <div class="row justify-content-center mb-5 p-0 infinite-container">
     <!-- Product Cards -->
         {% include 'product/product-item.html' with products=products %}
     <!-- End Product Cards -->
     </div>
-
+    <div class="loading text-center" style="display: none">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
     <!-- Start Paginator -->
-    {% include 'layout/__paginator.html' with page_obj=page_obj %}
+    {#    {% include 'layout/__paginator.html' with page_obj=page_obj %}#}
+    {% if page_obj.has_next %}
+        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+    {% endif %}
     <!-- End Paginator -->
 
+{% endblock %}
+{% block extra_footer %}
+    <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+    });
+    </script>
 {% endblock %}

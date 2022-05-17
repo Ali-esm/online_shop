@@ -12,16 +12,7 @@
             {% include 'customer/_profile_list_group.html' %}
 
             {% block profile_content %}
-			<div class="col-md-8 col-sm-7">
-				<h2>{{ customer.user.phone_number }}</h2>
-				<h4>{{ customer.get_full_name }}</h4>
-				<hr>
-                <h3>Main Address</h3>
-				<p>{{ address.city }}</p>
-				<p>{{ address.street }}</p>
-				<p>{{ address.zip_code }}</p>
-				<hr>
-			</div>
+
             {% endblock %}
 
 		</div>
