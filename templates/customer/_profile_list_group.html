@@ -2,7 +2,7 @@
 
 <div class="col-md-4 col-sm-5">
     <div class="list-group">
-        <a href="#" class="list-group-item">
+        <a href="{% url 'customer:dashboard_view' %}" class="list-group-item">
             <i class="fa fa-tachometer"></i> &nbsp;&nbsp;{% trans "Dashboard" %}
         </a>
         <a href="{% url 'customer:profile_view' %}" class="list-group-item">

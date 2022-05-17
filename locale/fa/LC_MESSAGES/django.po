@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-13 17:54+0000\n"
-"PO-Revision-Date: 2022-05-13 17:55+0000\n"
+"POT-Creation-Date: 2022-05-17 19:10+0000\n"
+"PO-Revision-Date: 2022-05-17 19:16+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -183,7 +183,7 @@ msgstr "کدپستی"
 msgid "Address"
 msgstr "آدرس"
 
-#: customer/models.py:44 templates/customer/_profile_list_group.html:19
+#: customer/models.py:44 templates/customer/_profile_list_group.html:16
 msgid "Addresses"
 msgstr "آدرس ها"
 
@@ -208,13 +208,11 @@ msgid "orders"
 msgstr "سفارشات"
 
 #: order/models.py:21
-#, fuzzy
 #| msgid "Customer"
 msgid "customer"
 msgstr "مشتری"
 
 #: order/models.py:23
-#, fuzzy
 #| msgid "Address"
 msgid "address"
 msgstr "آدرس"
@@ -237,7 +235,6 @@ msgid "status"
 msgstr "وضعیت"
 
 #: order/models.py:57 templates/order/order_items.html:14
-#, fuzzy
 #| msgid "Product"
 msgid "product"
 msgstr "محصول"
@@ -368,26 +365,28 @@ msgstr "کدهای تخفیف"
 msgid "Dashboard"
 msgstr "داشبور"
 
-#: templates/customer/_profile_list_group.html:7
-#: templates/customer/_profile_list_group.html:11
-#: templates/customer/_profile_list_group.html:15
-#: templates/customer/_profile_list_group.html:20
-#: templates/customer/_profile_list_group.html:24
-msgid "fa-chevron-right"
-msgstr "fa-chevron-left"
-
-#: templates/customer/_profile_list_group.html:10
+#: templates/customer/_profile_list_group.html:9
 msgid "Information"
 msgstr "اطلاعات کاربری"
 
-#: templates/customer/_profile_list_group.html:14
+#: templates/customer/_profile_list_group.html:12
 msgid "Orders"
 msgstr "سفارشات"
 
-#: templates/customer/_profile_list_group.html:23
+#: templates/customer/_profile_list_group.html:19
 #: templates/layout/__navbar.html:89
 msgid "logout"
 msgstr "خروج"
+
+#: templates/customer/dashboard.html:23
+#| msgid "orders"
+msgid "last orders"
+msgstr "اخرین سفارشات"
+
+#: templates/customer/dashboard.html:32
+#| msgid "orders"
+msgid "All orders"
+msgstr "تمام سفارش ها"
 
 #: templates/customer/login.html:23 templates/customer/signup.html:18
 #: templates/layout/__navbar.html:11
@@ -441,25 +440,21 @@ msgid "City"
 msgstr "شهر"
 
 #: templates/customer/profile_address_list.html:10
-#, fuzzy
 #| msgid "province"
 msgid "Province"
 msgstr "استان"
 
 #: templates/customer/profile_address_list.html:11
-#, fuzzy
 #| msgid "alley"
 msgid "Alley"
 msgstr "کوچه"
 
 #: templates/customer/profile_address_list.html:13
-#, fuzzy
 #| msgid "Off Code"
 msgid "Zip Code"
 msgstr "کد تخفیف"
 
 #: templates/customer/profile_address_list.html:14
-#, fuzzy
 #| msgid "delete"
 msgid "Delete"
 msgstr "حذف "
@@ -481,7 +476,6 @@ msgid "Save"
 msgstr "ذخیره"
 
 #: templates/layout/__items_modal.html:8
-#, fuzzy
 #| msgid "order items"
 msgid "Order Items"
 msgstr "سفارش کالاها"
@@ -507,15 +501,15 @@ msgid "Contact"
 msgstr "تماس با ما"
 
 #: templates/layout/__navbar.html:87
-msgid "profile"
-msgstr "پروفایل"
+#| msgid "Dashboard"
+msgid "dashboard"
+msgstr "داشبور"
 
 #: templates/layout/_base.html:13
 msgid "Rayka Shop"
 msgstr "فروشگاه رایکا"
 
 #: templates/order/order_items.html:18
-#, fuzzy
 #| msgid "last update"
 msgid "update"
 msgstr "اخرین بروزرسانی"
@@ -567,6 +561,12 @@ msgstr "اضافه کردن"
 #: templates/product/product-item.html:24
 msgid "Detail"
 msgstr "جزئیات"
+
+#~ msgid "fa-chevron-right"
+#~ msgstr "fa-chevron-left"
+
+#~ msgid "profile"
+#~ msgstr "پروفایل"
 
 #~ msgid "is used"
 #~ msgstr "استفاده شده"

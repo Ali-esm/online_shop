@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-13 17:54+0000\n"
-"PO-Revision-Date: 2022-02-15 16:29+0000\n"
+"POT-Creation-Date: 2022-05-17 19:10+0000\n"
+"PO-Revision-Date: 2022-05-17 19:12+0000\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: customer/models.py:44 templates/customer/_profile_list_group.html:19
+#: customer/models.py:44 templates/customer/_profile_list_group.html:16
 msgid "Addresses"
 msgstr ""
 
@@ -362,25 +362,25 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: templates/customer/_profile_list_group.html:7
-#: templates/customer/_profile_list_group.html:11
-#: templates/customer/_profile_list_group.html:15
-#: templates/customer/_profile_list_group.html:20
-#: templates/customer/_profile_list_group.html:24
-msgid "fa-chevron-right"
-msgstr ""
-
-#: templates/customer/_profile_list_group.html:10
+#: templates/customer/_profile_list_group.html:9
 msgid "Information"
 msgstr ""
 
-#: templates/customer/_profile_list_group.html:14
+#: templates/customer/_profile_list_group.html:12
 msgid "Orders"
 msgstr ""
 
-#: templates/customer/_profile_list_group.html:23
+#: templates/customer/_profile_list_group.html:19
 #: templates/layout/__navbar.html:89
 msgid "logout"
+msgstr ""
+
+#: templates/customer/dashboard.html:23
+msgid "last orders"
+msgstr ""
+
+#: templates/customer/dashboard.html:32
+msgid "All orders"
 msgstr ""
 
 #: templates/customer/login.html:23 templates/customer/signup.html:18
@@ -491,7 +491,7 @@ msgid "Contact"
 msgstr ""
 
 #: templates/layout/__navbar.html:87
-msgid "profile"
+msgid "dashboard"
 msgstr ""
 
 #: templates/layout/_base.html:13
