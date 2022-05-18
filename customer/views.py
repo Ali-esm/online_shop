@@ -17,7 +17,7 @@ from django.core.mail import send_mail, BadHeaderError
 from core.models import User
 from .models import Customer, Address
 
-from order.queries import get_last_n_orders
+from .queries import get_last_n_orders
 
 
 class CustomerSignUpView(views.FormView):
@@ -163,5 +163,6 @@ class CustomerOrderView(LoginRequiredMixin, View):
 
 class CustomerDashboardView(LoginRequiredMixin, View):
     def get(self, request):
-        context = {"last_orders": get_last_n_orders(3)}
+        customer = Customer.objects.get(user__phone_number=request.user.phone_number)
+        context = {"last_orders": get_last_n_orders(3, customer)}
         return render(request, "customer/dashboard.html", context=context)
